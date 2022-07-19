@@ -9,7 +9,6 @@
         "prefer-const": "warn",
         "max-len": ["warn", { "code": 120 }],
         "comma-dangle": ["warn", "always-multiline"],
-        "no-unused-vars": "warn",
         "quotes": ["error", "single"],
         "jsx-quotes": ["error", "prefer-double"],
         "semi": ["error", "always"],
