@@ -1,0 +1,16 @@
+.genreTile {
+    font-weight: bold;
+    height: auto;
+    background-color: #c8c8c8;
+    color: #181a1b;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 0.3rem;
+    margin: 0 0.5rem 0 0;
+    transition: all 0.2s ease-in-out;
+}
+
+.genreTile:hover {
+    background-color: #181a1b;
+    color: #c8c8c8;
+}

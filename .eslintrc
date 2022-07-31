@@ -8,7 +8,7 @@
         "no-console": "warn",
         "prefer-const": "warn",
         "max-len": ["warn", { "code": 120 }],
-        "comma-dangle": ["warn", "always-multiline"],
+        "comma-dangle": ["warn", "only-multiline"],
         "quotes": ["error", "single"],
         "jsx-quotes": ["error", "prefer-double"],
         "semi": ["error", "always"],

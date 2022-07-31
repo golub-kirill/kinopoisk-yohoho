@@ -1,22 +1,22 @@
-import React, { useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import './App.css';
-import { useAppDispatch, useAppSelector } from './hooks/redux';
-import { fetchPremieres } from './store/reducers/ActionCreators';
+import { InfoPage } from './pages/InfoPage/InfoPage';
+import { PlayerPage } from './pages/PlayerPage/PlayerPage';
+import { PremieresPage } from './pages/PremieresPage/PremieresPage';
 
 function App() {
-	const dispatch = useAppDispatch();
-	const {films, isLoading, error} = useAppSelector(state => state.filmReducer);
-
-	useEffect(() => {
-		dispatch(fetchPremieres());
-	},[ ]);
-	
-	return <div className="App">
-		{isLoading ? <div>Loading...</div> : null}
-		{error ? <div>Error: {error}</div> : null}
-		{JSON.stringify(films, null, 2)}
-	</div>;
+    return (
+        <Router>
+            <Routes>
+                <Route path="/">
+                    <Route index element={<PremieresPage />} />
+                    <Route path="/:filmId" element={<InfoPage />} />
+                </Route>
+                <Route path="/player" element={<PlayerPage />} />
+            </Routes>
+        </Router>
+    );
 }
 
 export default App;

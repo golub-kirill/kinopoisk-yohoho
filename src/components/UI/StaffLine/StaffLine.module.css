@@ -1,0 +1,13 @@
+.staffLine {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 1rem 0 0 0;
+}
+
+.staffLine__label {
+    opacity: 0.5;
+    font-size: 0.8rem;
+    margin: 0 0.5rem 0 0;
+}

@@ -1,17 +1,19 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 
-import filmReducer from './reducers/FilmSlice';
+import { kinopoiskApi } from '../services/KinopoiskService';
+
 
 
 
 const rootReducer = combineReducers({
-filmReducer,
+    [kinopoiskApi.reducerPath]: kinopoiskApi.reducer,
 });
 
 export const setupStore = () => {
     return configureStore({
         reducer: rootReducer,
-
+        middleware: (getDefaultMiddleware) => getDefaultMiddleware()
+        .concat(kinopoiskApi.middleware),
     });
 };
 
