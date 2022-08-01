@@ -62,12 +62,6 @@ export const Card: FC<CardProps> = memo(({ film }) => {
 
                 <span className={styles.card__content__buttons}>
                     <Button onClick={() => navigate(`/${film.kinopoiskId}`)}>
-                        More <BsInfoLg />
-                    </Button>
-                    <Button
-                        onClick={function (): void {
-                            throw new Error('Function not implemented.');
-                        }}>
                         Play <BsFillPlayFill />
                     </Button>
                 </span>

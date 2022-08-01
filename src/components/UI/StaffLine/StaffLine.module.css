@@ -11,3 +11,12 @@
     font-size: 0.8rem;
     margin: 0 0.5rem 0 0;
 }
+
+.staffLine__person {
+    text-decoration: none;
+    color: inherit;
+}
+
+.staffLine__person:hover {
+    text-decoration: underline;
+}

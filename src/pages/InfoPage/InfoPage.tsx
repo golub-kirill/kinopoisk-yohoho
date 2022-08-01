@@ -1,7 +1,8 @@
 import React, { FC, memo, useMemo } from 'react';
-import { BsBookmarkStar, BsFillPlayFill } from 'react-icons/bs';
+import { BsBookmarkStar } from 'react-icons/bs';
 import { useParams } from 'react-router-dom';
 
+import { Player } from '../../components/Player/Player';
 import { Button } from '../../components/UI/Button/Button';
 import { GenreTile } from '../../components/UI/GenreTile/GenreTile';
 import { StaffLine } from '../../components/UI/StaffLine/StaffLine';
@@ -85,6 +86,8 @@ export const InfoPage: FC = memo(() => {
                                 src={film.posterUrlPreview}
                                 alt={film.nameRu}
                             />
+                            {/* TODO: доделать и быть крутым */}
+                            {/* <TraillersFrame/> */}
                         </div>
                         <div className={styles.infoPage__content__info}>
                             {/* TITLE */}
@@ -123,15 +126,6 @@ export const InfoPage: FC = memo(() => {
                                 className={
                                     styles.infoPage__content__info__buttons
                                 }>
-                                <Button
-                                    onClick={function (): void {
-                                        throw new Error(
-                                            'Function not implemented.'
-                                        );
-                                    }}>
-                                    Play <BsFillPlayFill />
-                                </Button>
-
                                 <Button
                                     onClick={function (): void {
                                         throw new Error(
@@ -192,7 +186,7 @@ export const InfoPage: FC = memo(() => {
                                             }>
                                             Slogan:
                                         </span>{' '}
-                                        {film.slogan}
+                                        {`"${film.slogan}"`}
                                     </p>
                                 )}
 
@@ -239,6 +233,7 @@ export const InfoPage: FC = memo(() => {
                             </div>
                         </div>
                     </div>
+                    <Player />
                 </div>
             )}
         </div>

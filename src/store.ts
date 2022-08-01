@@ -1,6 +1,6 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 
-import { kinopoiskApi } from '../services/KinopoiskService';
+import { kinopoiskApi } from './services/KinopoiskService';
 
 
 
