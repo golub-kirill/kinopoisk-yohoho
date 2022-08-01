@@ -1,12 +1,12 @@
-import React, { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { FC, useEffect } from 'react';
 
 import styles from './Player.module.css';
 
-export const Player = () => {
-    const params = useParams();
-    const filmId: number = Number(params.filmId);
+interface PlayerProps {
+    filmId: number;
+}
 
+export const Player: FC<PlayerProps> = ({ filmId }) => {
     useEffect(() => {
         const script = document.createElement('script');
         script.src = '//yohoho.cc/yo.js';

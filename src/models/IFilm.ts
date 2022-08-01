@@ -34,7 +34,7 @@ export interface IFilm {
     shortDescription?: string;
     editorAnotation?: string;
     ratingMpaa?: string;
-    ratingAgeLimit?: string;
+    ratingAgeLimits?: string;
     serial?: boolean;
     completed?: boolean;
     premiere?: string;
