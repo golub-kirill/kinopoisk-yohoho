@@ -1,0 +1,52 @@
+.ratings__wrapper__kp {
+    position: relative;
+    top: -30rem;
+    left: 20rem;
+    padding: 0.2rem;
+    border-radius: 5px;
+    background-color: #997a00;
+    color: #ffffff80;
+    font-size: 1.2rem;
+    font-weight: bold;
+    width: fit-content;
+    margin: 0 0 0.5rem 0;
+}
+
+.ratings__wrapper__imdb {
+    position: relative;
+    top: -30rem;
+    left: 20rem;
+    padding: 0.2rem;
+    border-radius: 5px;
+    background-color: #cc5200;
+    color: #ffffff80;
+    font-size: 1.2rem;
+    font-weight: bold;
+    width: fit-content;
+}
+
+.votes {
+    position: relative;
+    top: -3rem;
+}
+
+progress {
+    width: 100%;
+    height: 0.75rem;
+    appearance: none;
+}
+progress::-webkit-progress-bar {
+    background-color: red;
+    border-radius: 10px;
+}
+progress::-webkit-progress-value {
+    background-color: rgb(47, 255, 57);
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+progress[value='1']::-webkit-progress-value {
+    background-color: rgb(47, 255, 57);
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}

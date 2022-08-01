@@ -4,7 +4,7 @@
     align-items: flex-start;
     justify-content: flex-start;
     width: 80vw;
-    margin: 0 auto;
+    margin: 3rem auto;
     padding: 5%;
     background-color: #181a1b;
 }
@@ -39,10 +39,11 @@
     background-color: #1e2122;
     color: #fff;
     font-size: 1.1rem;
-    padding: 0.2rem;
-    border-radius: 0.5rem;
     margin: 0 0 0 0.5rem;
-    border: 1px solid #fff;
+    border: #fff solid 1px;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    opacity: 0.5;
 }
 
 .infoPage__content__info__buttons {

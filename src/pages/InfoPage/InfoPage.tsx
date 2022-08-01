@@ -6,7 +6,10 @@ import { About } from '../../components/InfoPageComponents/About';
 import { Description } from '../../components/InfoPageComponents/Description';
 import { Staff } from '../../components/InfoPageComponents/Staff';
 import { Title } from '../../components/InfoPageComponents/Title';
+import { Navbar } from '../../components/Navbar/Navbar';
 import { Player } from '../../components/Player/Player';
+import { Ratings } from '../../components/Ratings/Ratings';
+import { SimilarFilms } from '../../components/SimilarFilms/SimilarFilms';
 import { Button } from '../../components/UI/Button/Button';
 import { kinopoiskApi } from '../../services/KinopoiskService';
 
@@ -22,6 +25,7 @@ export const InfoPage: FC = memo(() => {
 
     return (
         <div>
+            <Navbar />
             {isLoading && <div>Loading...</div>}
             {isError && <div>Error!</div>}
             {film && (
@@ -31,6 +35,13 @@ export const InfoPage: FC = memo(() => {
                             <img
                                 src={film.posterUrlPreview}
                                 alt={film.nameRu}
+                                loading="lazy"
+                            />
+                            <Ratings
+                                ratingKinopoisk={film.ratingKinopoisk}
+                                ratingImdb={film.ratingImdb}
+                                reviewsCount={film.reviewsCount}
+                                ratingGoodReview={film.ratingGoodReview}
                             />
                         </div>
                         <div className={styles.infoPage__content__info}>
@@ -41,6 +52,7 @@ export const InfoPage: FC = memo(() => {
                                 nameOriginal={film.nameOriginal}
                                 year={film.year}
                                 ratingAgeLimits={film.ratingAgeLimits}
+                                ratingMpaa={film.ratingMpaa}
                             />
                             {/* DESCRIPTION */}
 
@@ -67,6 +79,7 @@ export const InfoPage: FC = memo(() => {
                         </div>
                     </div>
                     <Player filmId={Number(params.filmId)} />
+                    <SimilarFilms filmId={Number(params.filmId)} />
                 </div>
             )}
         </div>

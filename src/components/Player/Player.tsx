@@ -12,7 +12,15 @@ export const Player: FC<PlayerProps> = ({ filmId }) => {
         script.src = '//yohoho.cc/yo.js';
         script.async = true;
         document.body.appendChild(script);
-    }, []);
+
+        document
+            .getElementById('yohoho')
+            ?.setAttribute('data-kinopoisk', filmId.toString());
+
+        return () => {
+            // document.body.removeChild(script);
+        };
+    }, [filmId]);
 
     return (
         <div className={styles.player__wrapper}>

@@ -7,6 +7,8 @@
     margin: 2rem 1rem 0 0;
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
     transition: all 0.2s ease-in-out;
+    border-right: 2px solid #ffffff80;
+    border-bottom: 2px solid #ffffff80;
 }
 
 .card:hover {
@@ -19,25 +21,19 @@
     flex-flow: row nowrap;
     justify-content: center;
     align-items: center;
-
     background-color: #c43e26;
-
     height: 2rem;
     width: 4rem;
-
     position: relative;
     top: 0.5rem;
     left: 0.5rem;
-
     border-radius: 5px;
-
     font-size: 1.5rem;
-
     cursor: pointer;
 }
 
 .card__poster {
-    height: 20em;
+    height: 20rem;
 }
 
 .card__content {
@@ -62,7 +58,6 @@
     font-weight: bold;
 }
 
-
 .card__content__info {
     display: flex;
     flex-flow: row wrap;
@@ -70,7 +65,6 @@
     align-items: center;
     padding: 2rem;
 }
-
 
 .card__content__info span {
     font-size: 0.8rem;

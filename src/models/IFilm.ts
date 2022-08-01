@@ -1,8 +1,6 @@
-import { IStaffList } from './IStaffList';
-
-
 export interface IFilm {
     kinopoiskId?: number | undefined;
+    filmId?: number | undefined;
     imdbId?: string;
     nameRu?: string;
     nameEn?: string;
@@ -13,8 +11,8 @@ export interface IFilm {
     posterUrlPreview?: string;
     coverUrl?: string;
     logoUrl?: string;
-    reviewsCount?: number;
-    ratingGoodReview?: number;
+    reviewsCount: number;
+    ratingGoodReview: number;
     ratingGoodReviewCount?: number;
     ratingKinopoisk?: number;
     ratingKinopoiskVoteCount?: number;
@@ -39,5 +37,5 @@ export interface IFilm {
     completed?: boolean;
     premiere?: string;
     duration?: number;
-    staff?: IStaffList;
+    staff?: object;
 }

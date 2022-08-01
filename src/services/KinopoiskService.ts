@@ -26,8 +26,8 @@ export const kinopoiskApi = createApi({
 
         // Fetch info about film by id
         fetchFilmById: build.query<IFilm, number>({
-            query: (id: number) => ({
-                url: `/v2.2/films/${id}`,
+            query: (filmId: number) => ({
+                url: `/v2.2/films/${filmId}`,
                 method: 'GET',
                 headers: {
                     'X-API-KEY': process.env.REACT_APP_KINOPOISK_API_UNOFFICIAL_TOKEN || '',
@@ -52,5 +52,22 @@ export const kinopoiskApi = createApi({
                 },
             }),
         }),
+
+        // Fetch similar films by id
+        fetchSimilarFilmsById: build.query({
+            query: (filmId: number) => ({
+                url: `/v2.2/films/${filmId}/similars`,
+                params: {
+                    filmId: filmId,
+                },
+                method: 'GET',
+                headers: {
+                    'X-API-KEY': process.env.REACT_APP_KINOPOISK_API_UNOFFICIAL_TOKEN || '',
+                    'Content-Type': 'application/json',
+                },
+            }),
+        }),
+
     }),
+
 });

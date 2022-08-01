@@ -8,17 +8,23 @@ interface TitleProps {
     nameOriginal: string | undefined;
     year: number | undefined;
     ratingAgeLimits: string | undefined;
+    ratingMpaa: string | undefined;
 }
 
 export const Title: FC<TitleProps> = memo(
-    ({ nameRu, nameEn, nameOriginal, year, ratingAgeLimits }) => {
+    ({ nameRu, nameEn, nameOriginal, year, ratingAgeLimits, ratingMpaa }) => {
         return (
             <div className={styles.infoPage__content__info__title}>
                 <span className={styles.infoPage__content__info__title__ru}>
-                    {`${nameRu} (${year})`}
+                    {nameRu ? nameRu : nameOriginal} {`(${year})`}
                     <span className={styles.infoPage__ageLimit}>
                         {`${ratingAgeLimits?.substring(3, 5)}+`}
                     </span>
+                    {ratingMpaa && (
+                        <span className={styles.infoPage__ageLimit}>
+                            {ratingMpaa?.toUpperCase()}
+                        </span>
+                    )}
                 </span>
                 {nameEn ||
                     (nameOriginal && (

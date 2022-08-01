@@ -1,5 +1,5 @@
 import React, { FC, memo } from 'react';
-import { BsFillPlayFill, BsInfoLg, BsBookmarkStar } from 'react-icons/bs';
+import { BsFillPlayFill, BsBookmarkStar } from 'react-icons/bs';
 import { useNavigate } from 'react-router-dom';
 
 import { IFilm } from '../../models/IFilm';
@@ -10,9 +10,10 @@ import styles from './Card.module.css';
 
 interface CardProps {
     film: IFilm;
+    onClick?: () => void;
 }
 
-export const Card: FC<CardProps> = memo(({ film }) => {
+export const Card: FC<CardProps> = memo(({ film, onClick }) => {
     const navigate = useNavigate();
 
     const genresList = film.genres?.map(
@@ -24,11 +25,12 @@ export const Card: FC<CardProps> = memo(({ film }) => {
         .join(' | ');
 
     return (
-        <div className={styles.card}>
+        <div className={styles.card} onClick={onClick}>
             <img
                 className={styles.card__poster}
                 src={film.posterUrlPreview}
                 alt={film.nameRu}
+                loading="lazy"
             />
             <div className={styles.card__content}>
                 <div className={styles.card__content__title}>
@@ -50,7 +52,7 @@ export const Card: FC<CardProps> = memo(({ film }) => {
                     </span>
 
                     <span className={styles.card__content__info__duration}>
-                        {film.duration}m
+                        {film.duration}
                     </span>
 
                     <span className={styles.card__content__info__genre}>
@@ -61,7 +63,7 @@ export const Card: FC<CardProps> = memo(({ film }) => {
                 </div>
 
                 <span className={styles.card__content__buttons}>
-                    <Button onClick={() => navigate(`/${film.kinopoiskId}`)}>
+                    <Button onClick={() => navigate(`/${film.kinopoiskId || film.filmId}`)}>
                         Play <BsFillPlayFill />
                     </Button>
                 </span>

@@ -5,3 +5,8 @@ html {
     font-weight: 400;
     color: #c8c8c8;
 }
+
+html::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+}
