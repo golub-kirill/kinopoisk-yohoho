@@ -1,0 +1,43 @@
+.searchItem__wrapper {
+    display: flex;
+    flex-direction: row ;
+    align-items: center;
+    width: 25rem;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    margin: 1rem 0 0 0 ;
+    text-decoration: none;
+    color: inherit;
+}
+
+.searchItem__wrapper:hover {
+    transform: scale(1.05);
+    background-color: #181818;
+    border-radius: 5px;
+    padding-right: 1rem;
+}
+
+.searchItem__image {
+    height: 6rem;
+ }
+
+.searchItem__info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    height: 5rem;
+    width: 100%;
+    justify-content: center;
+    font-size: 1.2rem;
+}
+
+.searchItem__info div {
+    margin: 0.5rem 0;
+}
+
+.searchItem__rating {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: rgb(34, 196, 34);
+}

@@ -18,7 +18,7 @@ export const Player: FC<PlayerProps> = ({ filmId }) => {
             ?.setAttribute('data-kinopoisk', filmId.toString());
 
         return () => {
-            // document.body.removeChild(script);
+            document.body.removeChild(script);
         };
     }, [filmId]);
 

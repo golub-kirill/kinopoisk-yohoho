@@ -1,0 +1,1 @@
+export const X_API_KEY = process.env.REACT_APP_KINOPOISK_API_UNOFFICIAL_TOKEN;

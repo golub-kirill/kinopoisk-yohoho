@@ -1,10 +1,11 @@
 import React, { FC } from 'react';
-import { BsArrowLeftCircleFill, BsSearch } from 'react-icons/bs';
+import { BsArrowLeftCircleFill } from 'react-icons/bs';
 import { NavLink, useParams } from 'react-router-dom';
 
 import { Button } from '../UI/Button/Button';
 
 import styles from './Navbar.module.css';
+import { Search } from './components/Search/Search';
 
 interface NavbarProps {}
 
@@ -23,12 +24,7 @@ export const Navbar: FC<NavbarProps> = () => {
                     <div>ЛИСИЧКИНО КИНО</div>
                 )}
             </div>
-            <div className={styles.navBar__search}>
-                <input type="text" placeholder="Search" />
-                <button>
-                    <BsSearch id={styles.navBar__search_icon} />
-                </button>
-            </div>
+            <Search />
             <div className={styles.navBar__menu}>
                 <Button
                     onClick={function (): void {
@@ -40,4 +36,3 @@ export const Navbar: FC<NavbarProps> = () => {
         </div>
     );
 };
-

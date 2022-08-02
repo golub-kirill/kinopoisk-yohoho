@@ -8,7 +8,7 @@ import { Staff } from '../../components/InfoPageComponents/Staff';
 import { Title } from '../../components/InfoPageComponents/Title';
 import { Navbar } from '../../components/Navbar/Navbar';
 import { Player } from '../../components/Player/Player';
-import { Ratings } from '../../components/Ratings/Ratings';
+import { Ratings } from '../../components/UI/Ratings/Ratings';
 import { SimilarFilms } from '../../components/SimilarFilms/SimilarFilms';
 import { Button } from '../../components/UI/Button/Button';
 import { kinopoiskApi } from '../../services/KinopoiskService';

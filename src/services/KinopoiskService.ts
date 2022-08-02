@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/dist/query/react';
 
+import { X_API_KEY } from '../constants/api';
 import { IFilm } from '../models/IFilm';
 
 export const kinopoiskApi = createApi({
@@ -16,7 +17,7 @@ export const kinopoiskApi = createApi({
                 },
                 method: 'GET',
                 headers: {
-                    'X-API-KEY': process.env.REACT_APP_KINOPOISK_API_UNOFFICIAL_TOKEN || '',
+                    'X-API-KEY': X_API_KEY,
                     'Content-Type': 'application/json',
                 },
 
@@ -30,12 +31,30 @@ export const kinopoiskApi = createApi({
                 url: `/v2.2/films/${filmId}`,
                 method: 'GET',
                 headers: {
-                    'X-API-KEY': process.env.REACT_APP_KINOPOISK_API_UNOFFICIAL_TOKEN || '',
+                    'X-API-KEY': X_API_KEY,
                     'Content-Type': 'application/json',
                 },
 
             }),
 
+        }),
+
+
+
+        // Fetch film by search query
+        fetchFilmsBySearch: build.query({
+            query: (props: {searchQuery: string, page: number}) => ({
+                url: '/v2.1/films/search-by-keyword',
+                params: {
+                    keyword: props.searchQuery,
+                    page: props.page,
+                },
+                method: 'GET',
+                headers: {
+                    'X-API-KEY': X_API_KEY,
+                    'Content-Type': 'application/json',
+                },
+            }),
         }),
 
         // Fetch info about film staff by id
@@ -47,7 +66,7 @@ export const kinopoiskApi = createApi({
                 },
                 method: 'GET',
                 headers: {
-                    'X-API-KEY': process.env.REACT_APP_KINOPOISK_API_UNOFFICIAL_TOKEN || '',
+                    'X-API-KEY': X_API_KEY,
                     'Content-Type': 'application/json',
                 },
             }),
@@ -62,7 +81,7 @@ export const kinopoiskApi = createApi({
                 },
                 method: 'GET',
                 headers: {
-                    'X-API-KEY': process.env.REACT_APP_KINOPOISK_API_UNOFFICIAL_TOKEN || '',
+                    'X-API-KEY': X_API_KEY,
                     'Content-Type': 'application/json',
                 },
             }),
