@@ -8,51 +8,51 @@ import { GenreTile } from '../UI/GenreTile/GenreTile';
 
 import styles from './Card.module.css';
 
-interface CardProps {
+interface Props {
     film: IFilm;
     onClick?: () => void;
 }
 
-export const Card: FC<CardProps> = memo(({ film, onClick }) => {
+export const Card: FC<Props> = memo((props: Props) => {
     const navigate = useNavigate();
 
-    const genresList = film.genres?.map(
+    const genresList = props.film.genres?.map(
         (genre): string => Object.values(genre)[0]
     );
 
-    const countriesList = film.countries
+    const countriesList = props.film.countries
         ?.map((country): object => Object.values(country))
         .join(' | ');
 
     return (
-        <div className={styles.card} onClick={onClick}>
+        <div className={styles.card} onClick={props.onClick}>
             <img
                 className={styles.card__poster}
-                src={film.posterUrlPreview}
-                alt={film.nameRu}
+                src={props.film.posterUrlPreview}
+                alt={props.film.nameRu}
                 loading="lazy"
             />
             <div className={styles.card__content}>
                 <div className={styles.card__content__title}>
                     <span className={styles.card__content__title__ru}>
-                        {film.nameRu + ' '}
+                        {props.film.nameRu + ' '}
                     </span>
-                    {film.nameEn && (
+                    {props.film.nameEn && (
                         <p className={styles.card__content__title__en}>
-                            {`(${film.nameEn})`}
+                            {`(${props.film.nameEn})`}
                         </p>
                     )}
                 </div>
                 <div className={styles.card__content__info}>
                     <span className={styles.card__content__info__year}>
-                        {film.year}
+                        {props.film.year}
                     </span>
                     <span className={styles.card__content__info__country}>
                         {countriesList}
                     </span>
 
                     <span className={styles.card__content__info__duration}>
-                        {film.duration}
+                        {props.film.duration}
                     </span>
 
                     <span className={styles.card__content__info__genre}>
@@ -63,7 +63,7 @@ export const Card: FC<CardProps> = memo(({ film, onClick }) => {
                 </div>
 
                 <span className={styles.card__content__buttons}>
-                    <Button onClick={() => navigate(`/${film.kinopoiskId || film.filmId}`)}>
+                    <Button onClick={() => navigate(`/${props.film.kinopoiskId || props.film.filmId}`)}>
                         Play <BsFillPlayFill />
                     </Button>
                 </span>

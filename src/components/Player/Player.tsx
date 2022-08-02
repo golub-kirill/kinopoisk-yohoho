@@ -2,11 +2,11 @@ import React, { FC, useEffect } from 'react';
 
 import styles from './Player.module.css';
 
-interface PlayerProps {
+interface Props {
     filmId: number;
 }
 
-export const Player: FC<PlayerProps> = ({ filmId }) => {
+export const Player: FC<Props> = (props: Props) => {
     useEffect(() => {
         const script = document.createElement('script');
         script.src = '//yohoho.cc/yo.js';
@@ -15,16 +15,16 @@ export const Player: FC<PlayerProps> = ({ filmId }) => {
 
         document
             .getElementById('yohoho')
-            ?.setAttribute('data-kinopoisk', filmId.toString());
+            ?.setAttribute('data-kinopoisk', props.filmId.toString());
 
         return () => {
             document.body.removeChild(script);
         };
-    }, [filmId]);
+    }, [props.filmId]);
 
     return (
         <div className={styles.player__wrapper}>
-            <div id="yohoho" data-kinopoisk={filmId}></div>
+            <div id="yohoho" data-kinopoisk={props.filmId}></div>
         </div>
     );
 };

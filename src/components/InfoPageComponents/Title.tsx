@@ -2,7 +2,7 @@ import React, { FC, memo } from 'react';
 
 import styles from '../../pages/InfoPage/InfoPage.module.css';
 
-interface TitleProps {
+interface Props {
     nameRu: string;
     nameEn: string;
     nameOriginal: string;
@@ -11,30 +11,30 @@ interface TitleProps {
     ratingMpaa: string;
 }
 
-export const Title: FC<TitleProps> = memo(
-    ({ nameRu, nameEn, nameOriginal, year, ratingAgeLimits, ratingMpaa }) => {
+export const Title: FC<Props> = memo(
+    (props: Props) => {
         return (
             <div className={styles.infoPage__content__info__title}>
                 <span className={styles.infoPage__content__info__title__ru}>
-                    {nameRu ? nameRu : nameOriginal} {`(${year})`}
-                    {ratingAgeLimits && (
+                    {props.nameRu ? props.nameRu : props.nameOriginal} {`(${props.year})`}
+                    {props.ratingAgeLimits && (
                         <span className={styles.infoPage__ageLimit}>
-                            {`${ratingAgeLimits?.substring(3, 5)}+`}
+                            {`${props.ratingAgeLimits?.substring(3, 5)}+`}
                         </span>
                     )}
-                    {ratingMpaa && (
+                    {props.ratingMpaa && (
                         <span className={styles.infoPage__ageLimit}>
-                            {ratingMpaa?.toUpperCase()}
+                            {props.ratingMpaa?.toUpperCase()}
                         </span>
                     )}
                 </span>
-                {nameEn ||
-                    (nameOriginal && (
+                {props.nameEn ||
+                    (props.nameOriginal && (
                         <p
                             className={
                                 styles.infoPage__content__info__title__en
                             }>
-                            {`${nameEn || nameOriginal}`}
+                            {`${props.nameEn || props.nameOriginal}`}
                         </p>
                     ))}
             </div>

@@ -6,13 +6,13 @@ import { Card } from '../Card/Card';
 
 import styles from './SimilarFilms.module.css';
 
-interface SimilarFilmsProps {
+interface Props {
     filmId: number;
 }
 
-export const SimilarFilms: FC<SimilarFilmsProps> = ({ filmId }) => {
+export const SimilarFilms: FC<Props> = (props: Props) => {
     const { data, isError, isLoading } =
-        kinopoiskApi.useFetchSimilarFilmsByIdQuery(Number(filmId));
+        kinopoiskApi.useFetchSimilarFilmsByIdQuery(Number(props.filmId));
 
     const films: IFilm[] = data?.items;
 

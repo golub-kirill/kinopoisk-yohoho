@@ -6,14 +6,14 @@ import { SearchItem } from '../SearchItem/SearchItem';
 
 import styles from './SearchResultWindow.module.css';
 
-interface SearchResultWindowProps {
+interface Props {
     searchQuery: string;
     page: number;
     setPage: (page: number) => void;
 }
 
-export const SearchResultWindow: FC<SearchResultWindowProps> = (
-    props: SearchResultWindowProps
+export const SearchResultWindow: FC<Props> = (
+    props: Props
 ) => {
     const { data, isLoading, isError } =
         kinopoiskApi.useFetchFilmsBySearchQuery({

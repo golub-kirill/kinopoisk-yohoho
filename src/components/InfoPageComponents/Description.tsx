@@ -2,14 +2,14 @@ import React, { FC, memo } from 'react';
 
 import styles from '../../pages/InfoPage/InfoPage.module.css';
 
-interface DescriptionProps {
+interface Props {
     description: string | undefined;
 }
 
-export const Description: FC<DescriptionProps> = memo(({ description }) => {
+export const Description: FC<Props> = memo((props: Props) => {
     return (
         <p className={styles.infoPage__content__info__description}>
-            {description}
+            {props.description}
         </p>
     );
 });

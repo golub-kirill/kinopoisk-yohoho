@@ -2,18 +2,18 @@ import React, { FC } from 'react';
 
 import styles from './Button.module.css';
 
-interface ButtonProps {
+interface Props {
     onClick: () => void;
     children?: React.ReactNode;
     className?: string;
 }
 
-export const Button: FC<ButtonProps> = ({ children, className, onClick }) => {
+export const Button: FC<Props> = (props: Props) => {
     return (
         <button
-            className={styles.styledButton || className}
-            onClick={() => onClick()}>
-            {children}
+            className={styles.styledButton || props.className}
+            onClick={() => props.onClick()}>
+            {props.children}
         </button>
     );
 };

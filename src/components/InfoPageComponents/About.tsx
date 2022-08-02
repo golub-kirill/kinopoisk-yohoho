@@ -3,23 +3,23 @@ import React, { FC, memo, useMemo } from 'react';
 import styles from '../../pages/InfoPage/InfoPage.module.css';
 import { GenreTile } from '../UI/GenreTile/GenreTile';
 
-type AboutProps = {
+type Props = {
     genres: object[] | undefined;
     countries: object[] | undefined;
     year: number | undefined;
     slogan: string | undefined;
 };
 
-export const About: FC<AboutProps> = memo(({ genres, countries, year, slogan }) => {
+export const About: FC<Props> = memo((props: Props) => {
     const genresList = useMemo(() => {
-        return genres?.map((genre): string => Object.values(genre)[0]);
-    }, [genres]);
+        return props.genres?.map((genre): string => Object.values(genre)[0]);
+    }, [props.genres]);
 
     const countriesList = useMemo(() => {
-        return countries
+        return props.countries
             ?.map((country): object => Object.values(country))
             .join(' | ');
-    }, [countries]);
+    }, [props.countries]);
 
     return (
         <div>
@@ -28,7 +28,7 @@ export const About: FC<AboutProps> = memo(({ genres, countries, year, slogan }) 
                 <span className={styles.infoPage__content__info__about__lable}>
                     Year of production:
                 </span>{' '}
-                {year}
+                {props.year}
             </p>
             <p id="country">
                 <span className={styles.infoPage__content__info__about__lable}>
@@ -45,7 +45,7 @@ export const About: FC<AboutProps> = memo(({ genres, countries, year, slogan }) 
                 ))}
             </p>
 
-            {slogan && (
+            {props.slogan && (
                 <p id="slogan">
                     <span
                         className={
@@ -53,7 +53,7 @@ export const About: FC<AboutProps> = memo(({ genres, countries, year, slogan }) 
                         }>
                         Slogan:
                     </span>{' '}
-                    {`"${slogan}"`}
+                    {`"${props.slogan}"`}
                 </p>
             )}
         </div>

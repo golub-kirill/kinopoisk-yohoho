@@ -4,16 +4,16 @@ import { IPerson } from '../../models/IPerson';
 import { kinopoiskApi } from '../../services/KinopoiskService';
 import { StaffLine } from '../UI/StaffLine/StaffLine';
 
-type StaffProps = {
+ interface Props  {
     filmId: number;
 };
 
-export const Staff: FC<StaffProps> = ({ filmId }) => {
+export const Staff: FC<Props> = (props: Props) => {
     const {
         data: staff,
         isError: isStaffError,
         isLoading: isStaffLoading,
-    } = kinopoiskApi.useFetchStaffByIdQuery(filmId);
+    } = kinopoiskApi.useFetchStaffByIdQuery(props.filmId);
 
     const staffList = useMemo(() => {
         const list = {

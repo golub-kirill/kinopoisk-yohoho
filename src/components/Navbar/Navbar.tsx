@@ -7,9 +7,9 @@ import { Button } from '../UI/Button/Button';
 import styles from './Navbar.module.css';
 import { Search } from './components/Search/Search';
 
-interface NavbarProps {}
+interface Props {}
 
-export const Navbar: FC<NavbarProps> = () => {
+export const Navbar: FC<Props> = (props: Props) => {
     const params = useParams();
 
     return (

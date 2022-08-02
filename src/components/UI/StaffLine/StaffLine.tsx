@@ -4,26 +4,26 @@ import { IPerson } from '../../../models/IPerson';
 
 import styles from './StaffLine.module.css';
 
-interface StaffLineProps {
+interface Props {
     role: string;
     list: IPerson[];
 }
 
-export const StaffLine: FC<StaffLineProps> = ({ role, list }) => {
-    if (!list.length) {
+export const StaffLine: FC<Props> = (props: Props) => {
+    if (!props.list.length) {
         return null;
     }
 
-    if (list.length > 5) {
-        list = list.slice(0, 5); // limit to 5
+    if (props.list.length > 5) {
+        props.list = props.list.slice(0, 5); // limit to 5
     }
 
     return (
-        <div id={role.toLowerCase()} className={styles.staffLine}>
-            <span className={styles.staffLine__label}>{role}:</span>
+        <div id={props.role.toLowerCase()} className={styles.staffLine}>
+            <span className={styles.staffLine__label}>{props.role}:</span>
             <span className={styles.staffLine__content}>
                 {' '}
-                {list.map((person, index) =>
+                {props.list.map((person, index) =>
                     person.professionKey.toLowerCase() === 'actor' ? (
                         person.description && (
                             <a
@@ -38,7 +38,7 @@ export const StaffLine: FC<StaffLineProps> = ({ role, list }) => {
                                 title={person.description}
                                 >
                                 {person.nameRu || person.nameEn}
-                                {index !== list.length - 1 && ', '}
+                                {index !== props.list.length - 1 && ', '}
                             </a>
                         )
                     ) : (
@@ -52,7 +52,7 @@ export const StaffLine: FC<StaffLineProps> = ({ role, list }) => {
                             target="_blank"
                             rel="noreferrer">
                             {person.nameRu || person.nameEn}
-                            {index !== list.length - 1 && ', '}
+                            {index !== props.list.length - 1 && ', '}
                         </a>
                     )
                 )}

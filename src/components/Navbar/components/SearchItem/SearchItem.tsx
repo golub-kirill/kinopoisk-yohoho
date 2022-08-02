@@ -5,11 +5,11 @@ import { IFilm } from '../../../../models/IFilm';
 
 import styles from './SearchItem.module.css';
 
-interface SearchItemProps {
+interface Props {
     film: IFilm;
 }
 
-export const SearchItem: FC<SearchItemProps> = (props: SearchItemProps) => {
+export const SearchItem: FC<Props> = (props: Props) => {
     return (
         <NavLink
             to={'/' + props.film.filmId}

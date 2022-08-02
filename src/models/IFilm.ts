@@ -1,7 +1,6 @@
 export interface IFilm {
     kinopoiskId?: number | undefined;
     filmId: number;
-    imdbId: string;
     nameRu: string;
     nameEn: string;
     nameOriginal: string;
@@ -19,13 +18,6 @@ export interface IFilm {
     ratingKinopoiskVoteCount: number;
     ratingImdb: number;
     ratingImdbVoteCount: number;
-    ratingFilmCritics: number;
-    ratingFilmCriticsVoteCount: number;
-    ratingAvait: number;
-    ratingAvaitCount: number;
-    ratingRfCritics: number;
-    ratingRfCriticsVoteCount: number;
-    webUrl: string;
     year: number;
     filmLength: number;
     slogan: string;
