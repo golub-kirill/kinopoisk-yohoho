@@ -26,10 +26,11 @@ export const Card: FC<Props> = memo((props: Props) => {
     }, [props.film.countries]);
 
     return (
-        <div className={styles.card} onClick={() =>
-            navigate(
-                `/${props.film.kinopoiskId || props.film.filmId}`
-            )}>
+        <div
+            className={styles.card}
+            onClick={() =>
+                navigate(`/${props.film.kinopoiskId || props.film.filmId}`)
+            }>
             <img
                 className={styles.card__poster}
                 src={props.film.posterUrlPreview}

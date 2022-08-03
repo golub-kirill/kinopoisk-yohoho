@@ -16,36 +16,17 @@
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.4);
 }
 
-.card__bookmark {
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: center;
-    align-items: center;
-    background-color: #c43e26;
-    height: 2rem;
-    width: 4rem;
-    position: relative;
-    top: 0.5rem;
-    left: 0.5rem;
-    border-radius: 5px;
-    font-size: 1.5rem;
-    cursor: pointer;
-}
-
 .card__poster {
     height: 20rem;
 }
 
 .card__content {
-    width: 100%;
-    height: available;
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
-    align-items: center;
     text-align: center;
-    padding: 1rem;
-    
+    align-items: center;
+    margin: 1rem auto;
 }
 
 .card__content__title__ru {
@@ -64,18 +45,10 @@
     flex-flow: row wrap;
     justify-content: space-evenly;
     align-items: center;
-    padding: 2rem;
+    margin: 1rem;
 }
 
 .card__content__info span {
     font-size: 0.8rem;
-    margin: 0 1rem 1rem 0;
-}
-
-.card__content__buttons {
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-evenly;
-    align-items: center;
-    width: 100%;
+    margin: 0 0.5rem 1rem;
 }

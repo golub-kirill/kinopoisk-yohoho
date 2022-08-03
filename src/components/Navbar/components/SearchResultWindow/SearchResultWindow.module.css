@@ -22,6 +22,7 @@
     background-color: #1e2122;
     max-height: 30rem;
     overflow-y: auto;
+    border: 2px solid #ffffff80;
 }
 
 .searchResultWinow__list::-webkit-scrollbar {
@@ -37,7 +38,6 @@
     border: none;
     color: inherit;
     font-size: 1.2rem;
-    
     padding: 1rem;
     cursor: pointer;
     position: sticky;

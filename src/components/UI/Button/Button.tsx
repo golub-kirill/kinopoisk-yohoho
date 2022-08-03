@@ -8,13 +8,15 @@ interface Props {
     children?: React.ReactNode;
     className?: string;
     icon?: React.ReactNode;
+    disabled?: boolean;
 }
 
 export const Button: FC<Props> = (props: Props) => {
     return (
         <button
             className={classNames(styles.styledButton, props.className)}
-            onClick={() => props.onClick()}>
+            onClick={() => props.onClick()}
+            disabled={props.disabled}>
             {props.children}
             {props.icon}
         </button>

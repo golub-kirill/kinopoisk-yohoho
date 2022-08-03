@@ -9,6 +9,7 @@ export const Search = memo(() => {
     const [searchQuery, setSearchQuery] = React.useState('');
     const [page, setPage] = React.useState<number>(1);
 
+
     return (
         <div>
             <div className={styles.search}>
@@ -19,6 +20,7 @@ export const Search = memo(() => {
                     onChange={(e) => {
                         setSearchQuery(e.target.value);
                     }}
+                    id="search"
                 />
                 <BsSearch id={styles.search_icon} />
             </div>

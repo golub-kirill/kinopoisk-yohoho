@@ -43,7 +43,7 @@ export const kinopoiskApi = createApi({
 
         // Fetch film by search query
         fetchFilmsBySearch: build.query({
-            query: (props: {searchQuery: string, page: number}) => ({
+            query: (props: { searchQuery: string, page: number }) => ({
                 url: '/v2.1/films/search-by-keyword',
                 params: {
                     keyword: props.searchQuery,
@@ -76,9 +76,6 @@ export const kinopoiskApi = createApi({
         fetchSimilarFilmsById: build.query({
             query: (filmId: number) => ({
                 url: `/v2.2/films/${filmId}/similars`,
-                params: {
-                    filmId: filmId,
-                },
                 method: 'GET',
                 headers: {
                     'X-API-KEY': X_API_KEY,
@@ -87,6 +84,17 @@ export const kinopoiskApi = createApi({
             }),
         }),
 
+        // Fetch sequels and prequels by id
+        fetchSequelPrequelById: build.query({
+            query: (filmId: number) => ({
+                url: `/v2.1/films/${filmId}/sequels_and_prequels`,
+                method: 'GET',
+                headers: {
+                    'X-API-KEY': X_API_KEY,
+                    'Content-Type': 'application/json',
+                },
+            }),
+        }),
     }),
 
 });

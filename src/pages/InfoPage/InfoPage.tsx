@@ -8,7 +8,8 @@ import { Title } from '../../components/InfoPageComponents/Title';
 import { Navbar } from '../../components/Navbar/Navbar';
 import { Player } from '../../components/Player/Player';
 import { Ratings } from '../../components/UI/Ratings/Ratings';
-import { SimilarFilms } from '../../components/SimilarFilms/SimilarFilms';
+import { SimilarFilms } from '../../components/InfoPageComponents/SimilarFilms/SimilarFilms';
+import { SequelsAndPrequels } from '../../components/InfoPageComponents/SequelsAndPrequels/SequelsAndPrequels';
 import { AddToFavoritesButton } from '../../components/UI/AddToFavoritesButton/AddToFavoritesButton';
 import { kinopoiskApi } from '../../services/KinopoiskService';
 import { useFavorites } from '../../hooks/useFavorites';
@@ -61,7 +62,10 @@ export const InfoPage: FC = memo(() => {
 
                             <Description description={film.description} />
 
-                            <AddToFavoritesButton isFavorite={isFavorite} filmId={film.kinopoiskId!}/>
+                            <AddToFavoritesButton
+                                isFavorite={isFavorite}
+                                filmId={film.kinopoiskId!}
+                            />
 
                             {/* ABOUT */}
 
@@ -75,6 +79,7 @@ export const InfoPage: FC = memo(() => {
                         </div>
                     </div>
                     <Player filmId={Number(params.filmId)} />
+                    <SequelsAndPrequels filmId={Number(params.filmId)} />
                     <SimilarFilms filmId={Number(params.filmId)} />
                 </div>
             )}

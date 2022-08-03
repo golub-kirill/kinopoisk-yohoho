@@ -1,8 +1,8 @@
 import React, { FC, memo } from 'react';
 
-import { IFilm } from '../../models/IFilm';
-import { kinopoiskApi } from '../../services/KinopoiskService';
-import { Card } from '../Card/Card';
+import { IFilm } from '../../../models/IFilm';
+import { kinopoiskApi } from '../../../services/KinopoiskService';
+import { Card } from '../../Card/Card';
 
 import styles from './SimilarFilms.module.css';
 
@@ -12,7 +12,7 @@ interface Props {
 
 export const SimilarFilms: FC<Props> = memo((props: Props) => {
     const { data, isError, isLoading } =
-        kinopoiskApi.useFetchSimilarFilmsByIdQuery(Number(props.filmId));
+        kinopoiskApi.useFetchSimilarFilmsByIdQuery(props.filmId);
 
     const films: IFilm[] = data?.items;
 

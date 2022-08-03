@@ -3,8 +3,8 @@ import React, { FC, memo } from 'react';
 import styles from './Ratings.module.css';
 
 interface Props {
-    ratingKinopoisk: number | undefined;
-    ratingImdb: number | undefined;
+    ratingKinopoisk: number;
+    ratingImdb: number;
     reviewsCount: number;
     ratingGoodReview: number;
 }
@@ -31,7 +31,10 @@ export const Ratings: FC<Props> = memo((props: Props) => {
                     <div className={styles.progress__container}>
                         <progress
                             id="votes"
-                            value={(props.reviewsCount * props.ratingGoodReview) / 100}
+                            value={
+                                (props.reviewsCount * props.ratingGoodReview) /
+                                100
+                            }
                             max={props.reviewsCount}
                         />
                     </div>
