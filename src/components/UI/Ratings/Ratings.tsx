@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, memo } from 'react';
 
 import styles from './Ratings.module.css';
 
@@ -9,7 +9,7 @@ interface Props {
     ratingGoodReview: number;
 }
 
-export const Ratings: FC<Props> = (props: Props) => {
+export const Ratings: FC<Props> = memo((props: Props) => {
     return (
         <div className={styles.ratings__wrapper}>
             {props.ratingKinopoisk && (
@@ -39,4 +39,4 @@ export const Ratings: FC<Props> = (props: Props) => {
             ) : null}
         </div>
     );
-};
+});

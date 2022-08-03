@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, memo } from 'react';
 import { NavLink } from 'react-router-dom';
 
 import { IFilm } from '../../../../models/IFilm';
@@ -9,7 +9,7 @@ interface Props {
     film: IFilm;
 }
 
-export const SearchItem: FC<Props> = (props: Props) => {
+export const SearchItem: FC<Props> = memo((props: Props) => {
     return (
         <NavLink
             to={'/' + props.film.filmId}
@@ -40,4 +40,4 @@ export const SearchItem: FC<Props> = (props: Props) => {
             </div>
         </NavLink>
     );
-};
+});

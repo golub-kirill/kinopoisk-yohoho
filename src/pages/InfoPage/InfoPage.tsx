@@ -1,5 +1,4 @@
 import React, { FC, memo } from 'react';
-import { BsBookmarkStar } from 'react-icons/bs';
 import { useParams } from 'react-router-dom';
 
 import { About } from '../../components/InfoPageComponents/About';
@@ -10,8 +9,9 @@ import { Navbar } from '../../components/Navbar/Navbar';
 import { Player } from '../../components/Player/Player';
 import { Ratings } from '../../components/UI/Ratings/Ratings';
 import { SimilarFilms } from '../../components/SimilarFilms/SimilarFilms';
-import { Button } from '../../components/UI/Button/Button';
+import { AddToFavoritesButton } from '../../components/UI/AddToFavoritesButton/AddToFavoritesButton';
 import { kinopoiskApi } from '../../services/KinopoiskService';
+import { useFavorites } from '../../hooks/useFavorites';
 
 import styles from './InfoPage.module.css';
 
@@ -22,6 +22,9 @@ export const InfoPage: FC = memo(() => {
         isError,
         isLoading,
     } = kinopoiskApi.useFetchFilmByIdQuery(Number(params.filmId));
+
+    const { favorites } = useFavorites();
+    const isFavorite = favorites.includes(film?.kinopoiskId!);
 
     return (
         <div>
@@ -58,14 +61,7 @@ export const InfoPage: FC = memo(() => {
 
                             <Description description={film.description} />
 
-                            <Button
-                                onClick={function (): void {
-                                    throw new Error(
-                                        'Function not implemented.'
-                                    );
-                                }}>
-                                Remember <BsBookmarkStar />
-                            </Button>
+                            <AddToFavoritesButton isFavorite={isFavorite} filmId={film.kinopoiskId!}/>
 
                             {/* ABOUT */}
 

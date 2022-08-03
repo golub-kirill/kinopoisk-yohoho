@@ -6,6 +6,7 @@ interface Props {
     onClick: () => void;
     children?: React.ReactNode;
     className?: string;
+    icon?: React.ReactNode;
 }
 
 export const Button: FC<Props> = (props: Props) => {
@@ -14,6 +15,7 @@ export const Button: FC<Props> = (props: Props) => {
             className={styles.styledButton || props.className}
             onClick={() => props.onClick()}>
             {props.children}
+            {props.icon}
         </button>
     );
 };

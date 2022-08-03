@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from 'react';
+import React, { FC, memo, useEffect } from 'react';
 
 import { IFilm } from '../../../../models/IFilm';
 import { kinopoiskApi } from '../../../../services/KinopoiskService';
@@ -12,7 +12,7 @@ interface Props {
     setPage: (page: number) => void;
 }
 
-export const SearchResultWindow: FC<Props> = (
+export const SearchResultWindow: FC<Props> = memo((
     props: Props
 ) => {
     const { data, isLoading, isError } =
@@ -50,4 +50,4 @@ export const SearchResultWindow: FC<Props> = (
             )}
         </div>
     );
-};
+});

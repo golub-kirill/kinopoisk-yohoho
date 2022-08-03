@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, memo } from 'react';
 
 import { IFilm } from '../../models/IFilm';
 import { kinopoiskApi } from '../../services/KinopoiskService';
@@ -10,7 +10,7 @@ interface Props {
     filmId: number;
 }
 
-export const SimilarFilms: FC<Props> = (props: Props) => {
+export const SimilarFilms: FC<Props> = memo((props: Props) => {
     const { data, isError, isLoading } =
         kinopoiskApi.useFetchSimilarFilmsByIdQuery(Number(props.filmId));
 
@@ -27,17 +27,11 @@ export const SimilarFilms: FC<Props> = (props: Props) => {
                     </div>
                     <div className={styles.similarFilms}>
                         {films.map((film: IFilm) => (
-                            <Card
-                                onClick={() => {
-                                    window.scrollTo(0, 0);
-                                }}
-                                key={film.filmId}
-                                film={film}
-                            />
+                            <Card key={film.filmId} film={film} />
                         ))}
                     </div>
                 </div>
             ) : null}
         </div>
     );
-};
+});

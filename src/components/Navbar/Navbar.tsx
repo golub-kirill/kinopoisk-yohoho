@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, memo } from 'react';
 import { BsArrowLeftCircleFill } from 'react-icons/bs';
 import { NavLink, useParams } from 'react-router-dom';
 
@@ -9,7 +9,7 @@ import { Search } from './components/Search/Search';
 
 interface Props {}
 
-export const Navbar: FC<Props> = (props: Props) => {
+export const Navbar: FC<Props> = memo((props: Props) => {
     const params = useParams();
 
     return (
@@ -35,4 +35,4 @@ export const Navbar: FC<Props> = (props: Props) => {
             </div>
         </div>
     );
-};
+});

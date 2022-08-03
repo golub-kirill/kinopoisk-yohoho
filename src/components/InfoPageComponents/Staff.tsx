@@ -1,14 +1,14 @@
-import React, { FC, useMemo } from 'react';
+import React, { FC, memo, useMemo } from 'react';
 
 import { IPerson } from '../../models/IPerson';
 import { kinopoiskApi } from '../../services/KinopoiskService';
 import { StaffLine } from '../UI/StaffLine/StaffLine';
 
- interface Props  {
+interface Props {
     filmId: number;
-};
+}
 
-export const Staff: FC<Props> = (props: Props) => {
+export const Staff: FC<Props> = memo((props: Props) => {
     const {
         data: staff,
         isError: isStaffError,
@@ -77,4 +77,4 @@ export const Staff: FC<Props> = (props: Props) => {
             )}
         </div>
     );
-};
+});

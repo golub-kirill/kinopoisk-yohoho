@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from 'react';
+import React, { FC, memo, useEffect } from 'react';
 
 import styles from './Player.module.css';
 
@@ -6,7 +6,7 @@ interface Props {
     filmId: number;
 }
 
-export const Player: FC<Props> = (props: Props) => {
+export const Player: FC<Props> = memo((props: Props) => {
     useEffect(() => {
         const script = document.createElement('script');
         script.src = '//yohoho.cc/yo.js';
@@ -27,4 +27,4 @@ export const Player: FC<Props> = (props: Props) => {
             <div id="yohoho" data-kinopoisk={props.filmId}></div>
         </div>
     );
-};
+});
