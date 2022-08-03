@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import React, { FC } from 'react';
 
 import styles from './Button.module.css';
@@ -12,7 +13,7 @@ interface Props {
 export const Button: FC<Props> = (props: Props) => {
     return (
         <button
-            className={styles.styledButton || props.className}
+            className={classNames(styles.styledButton, props.className)}
             onClick={() => props.onClick()}>
             {props.children}
             {props.icon}

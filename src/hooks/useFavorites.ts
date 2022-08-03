@@ -1,4 +1,21 @@
+import { useCallback } from 'react';
+import useLocalStorage from 'usehooks-ts/dist/esm/useLocalStorage/useLocalStorage';
 
-interface Props {}
+export const useFavorites = () => {
+    const [favorites, setFavorites] = useLocalStorage<number[]>('favorites', []);
 
-export const useFavorites = (props: Props) => {};
+    const toggleFavorite = useCallback((id: number) => {
+        if (favorites.includes(id)) {
+            setFavorites(favorites.filter((favorite: number) => favorite !== id));
+        } else {
+            setFavorites([...favorites, id]);
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [favorites]
+    );
+
+    return {
+        favorites,
+        toggleFavorite,
+    };
+};

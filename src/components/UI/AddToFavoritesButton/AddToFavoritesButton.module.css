@@ -1,0 +1,14 @@
+
+.addToFavoritesButton_active {
+    border: 2px solid blueviolet;
+    color: rgb(156, 66, 240);
+
+}
+
+.addToFavoritesButton_active:hover {
+    border: 2px solid blueviolet;
+    color: rgb(156, 66, 240);
+    background-color: #dbdfea;
+
+
+}
