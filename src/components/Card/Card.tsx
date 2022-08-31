@@ -57,7 +57,7 @@ export const Card: FC<Props> = memo((props: Props) => {
                     </span>
 
                     <span className={styles.card__content__info__duration}>
-                        {props.film.duration}
+                        {props.film.duration}m
                     </span>
 
                     <span className={styles.card__content__info__genre}>

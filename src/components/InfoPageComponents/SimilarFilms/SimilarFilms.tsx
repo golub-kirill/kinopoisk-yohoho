@@ -2,7 +2,8 @@ import React, { FC, memo } from 'react';
 
 import { IFilm } from '../../../models/IFilm';
 import { kinopoiskApi } from '../../../services/KinopoiskService';
-import { Card } from '../../Card/Card';
+import { HorizontalCard } from '../../HorizontalCard/HorizontalCard';
+import { LoadingSpinner } from '../../UI/LoadingSpinner/LoadingSpinner';
 
 import styles from './SimilarFilms.module.css';
 
@@ -11,15 +12,15 @@ interface Props {
 }
 
 export const SimilarFilms: FC<Props> = memo((props: Props) => {
-    const { data, isError, isLoading } =
-        kinopoiskApi.useFetchSimilarFilmsByIdQuery(props.filmId);
+    const { data, isLoading } = kinopoiskApi.useFetchSimilarFilmsByIdQuery(
+        props.filmId
+    );
 
     const films: IFilm[] = data?.items;
 
     return (
         <div>
-            {isLoading && <div>Loading...</div>}
-            {isError && <div>Error!</div>}
+            {isLoading && <LoadingSpinner />}
             {films?.length ? (
                 <div className={styles.similarFilms__wrapper}>
                     <div className={styles.similarFilms__title}>
@@ -27,7 +28,7 @@ export const SimilarFilms: FC<Props> = memo((props: Props) => {
                     </div>
                     <div className={styles.similarFilms}>
                         {films.map((film: IFilm) => (
-                            <Card key={film.filmId} film={film} />
+                            <HorizontalCard key={film.filmId} film={film} />
                         ))}
                     </div>
                 </div>

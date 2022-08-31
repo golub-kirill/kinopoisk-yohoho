@@ -4,6 +4,7 @@ import { useFavorites } from '../../hooks/useFavorites';
 import { Card } from '../../components/Card/Card';
 import { kinopoiskApi } from '../../services/KinopoiskService';
 import { Navbar } from '../../components/Navbar/Navbar';
+import { LoadingSpinner } from '../../components/UI/LoadingSpinner/LoadingSpinner';
 
 import styles from './BookmarksPage.module.css';
 
@@ -22,7 +23,7 @@ export const BookmarksPage = () => {
                     isLoading,
                 } = kinopoiskApi.useFetchFilmByIdQuery(filmId);
                 if (isLoading) {
-                    return <div>Loading...</div>;
+                    return <LoadingSpinner/>;
                 }
                 if (isError) {
                     return <div>Error!</div>;

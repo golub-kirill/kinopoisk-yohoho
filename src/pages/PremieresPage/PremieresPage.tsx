@@ -4,6 +4,7 @@ import { IFilm } from '../../models/IFilm';
 import { kinopoiskApi } from '../../services/KinopoiskService';
 import { Card } from '../../components/Card/Card';
 import { Navbar } from '../../components/Navbar/Navbar';
+import { LoadingSpinner } from '../../components/UI/LoadingSpinner/LoadingSpinner';
 
 import styles from './PremieresPage.module.css';
 
@@ -16,7 +17,7 @@ export const PremieresPage: FC = () => {
         <div>
             <Navbar />
             <div className={styles.premieresPage__content}>
-                {isLoading && <div>Loading...</div>}
+                {isLoading && <LoadingSpinner/>}
                 {isError && <div>Error!</div>}
                 {premieres &&
                     premieres.map((film: IFilm) => (

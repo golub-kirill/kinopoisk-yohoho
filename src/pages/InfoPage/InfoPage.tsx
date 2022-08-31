@@ -13,6 +13,7 @@ import { SequelsAndPrequels } from '../../components/InfoPageComponents/SequelsA
 import { AddToFavoritesButton } from '../../components/UI/AddToFavoritesButton/AddToFavoritesButton';
 import { kinopoiskApi } from '../../services/KinopoiskService';
 import { useFavorites } from '../../hooks/useFavorites';
+import { LoadingSpinner } from '../../components/UI/LoadingSpinner/LoadingSpinner';
 
 import styles from './InfoPage.module.css';
 
@@ -30,7 +31,7 @@ export const InfoPage: FC = memo(() => {
     return (
         <div>
             <Navbar />
-            {isLoading && <div>Loading...</div>}
+            {isLoading && <LoadingSpinner />}
             {isError && <div>Error!</div>}
             {film && (
                 <div className={styles.infoPage}>
