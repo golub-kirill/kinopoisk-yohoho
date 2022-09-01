@@ -8,8 +8,7 @@
     margin: 2rem 1rem 0 0;
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
     transition: all 0.2s ease-in-out;
-    border-right: 2px solid #ffffff80;
-    border-bottom: 2px solid #ffffff80;
+    border: 2px solid #ffffff80;
 }
 
 .card:hover {
