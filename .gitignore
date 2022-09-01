@@ -8,13 +8,9 @@
 # testing
 /coverage
 
-# production
-/build
-
 # misc
 .DS_Store
 .eslintrc
-.env
 .env.development.local
 .env.test.local
 .env.production.local
