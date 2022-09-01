@@ -1,6 +1,7 @@
 {
   "name": "kinopoisk-yohoho",
   "version": "0.1.0",
+  "homepage": "https://Fox0x.github.io/kinopoisk-yohoho",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.3",
@@ -26,7 +27,9 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint -c .eslintrc --ext .js,.jsx,.ts,.tsx src/",
-    "lint:fix": "eslint -c .eslintrc --ext .js,.jsx,.ts,.tsx src/ --fix"
+    "lint:fix": "eslint -c .eslintrc --ext .js,.jsx,.ts,.tsx src/ --fix",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "browserslist": {
     "production": [
@@ -40,5 +43,7 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "gh-pages": "^4.0.0"
+  }
 }

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useEffectOnce } from 'usehooks-ts';
 
 export default function useOnScreen(ref: React.RefObject<any>) {
