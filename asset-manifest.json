@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/kinopoisk-yohoho/static/css/main.84ce211f.css",
+    "main.js": "/kinopoisk-yohoho/static/js/main.ec53b1e7.js",
+    "index.html": "/kinopoisk-yohoho/index.html",
+    "main.84ce211f.css.map": "/kinopoisk-yohoho/static/css/main.84ce211f.css.map",
+    "main.ec53b1e7.js.map": "/kinopoisk-yohoho/static/js/main.ec53b1e7.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.84ce211f.css",
+    "static/js/main.ec53b1e7.js"
+  ]
+}
