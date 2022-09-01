@@ -4,7 +4,7 @@ import {
     BsBookmarkStar,
     BsPerson,
 } from 'react-icons/bs';
-import { NavLink, useParams, useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 import { Button } from '../UI/Button/Button';
 

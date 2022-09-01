@@ -1,7 +1,8 @@
 .card {
     display: flex;
     flex-flow: row nowrap;
-    width: 40em;
+    width: 45em;
+    min-height: 20rem;
     background-color: #181a1b;
     border-radius: 5px;
     margin: 2rem 1rem 0 0;
@@ -27,6 +28,7 @@
     text-align: center;
     align-items: center;
     margin: 1rem auto;
+    max-width: 20rem;
 }
 
 .card__content__title__ru {
@@ -51,5 +53,20 @@
 
 .card__content__info span {
     font-size: 0.8rem;
-    margin:  0.5rem 1rem;
+    margin: 1rem 0.5rem;
+}
+
+.card__content__info__genre {
+    display: flex;
+    flex-flow: row wrap;
+    min-width: 25rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.card__content__info__ratings {
+    position: relative;
+    top: -40rem;
+    left: -47rem;
+    transform: scale(0.9);
 }

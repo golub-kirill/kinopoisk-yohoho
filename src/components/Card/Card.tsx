@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { IFilm } from '../../models/IFilm';
 import { GenreTile } from '../UI/GenreTile/GenreTile';
+import { Ratings } from '../UI/Ratings/Ratings';
 
 import styles from './Card.module.css';
 
@@ -31,6 +32,7 @@ export const Card: FC<Props> = memo((props: Props) => {
             onClick={() =>
                 navigate(`/${props.film.kinopoiskId || props.film.filmId}`)
             }>
+               
             <img
                 className={styles.card__poster}
                 src={props.film.posterUrlPreview}
@@ -38,6 +40,7 @@ export const Card: FC<Props> = memo((props: Props) => {
                 loading="lazy"
             />
             <div className={styles.card__content}>
+         
                 <div className={styles.card__content__title}>
                     <span className={styles.card__content__title__ru}>
                         {props.film.nameRu + ' '}
@@ -49,6 +52,7 @@ export const Card: FC<Props> = memo((props: Props) => {
                     )}
                 </div>
                 <div className={styles.card__content__info}>
+               
                     <span className={styles.card__content__info__year}>
                         {props.film.year}
                     </span>
@@ -56,17 +60,20 @@ export const Card: FC<Props> = memo((props: Props) => {
                         {countriesList()}
                     </span>
 
-                    <span className={styles.card__content__info__duration}>
-                        {props.film.duration}m
-                    </span>
-
                     <span className={styles.card__content__info__genre}>
                         {genresList()?.map((genre: string, index: number) => (
                             <GenreTile key={index} genre={genre} />
                         ))}
                     </span>
+             
                 </div>
+                
             </div>
+            <Ratings
+                        ratingKinopoisk={props.film.ratingKinopoisk}
+                        ratingImdb={props.film.ratingImdb}
+                        className={styles.card__content__info__ratings}
+                    />
         </div>
     );
 });

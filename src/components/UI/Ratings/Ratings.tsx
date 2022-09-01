@@ -1,17 +1,19 @@
 import React, { FC, memo } from 'react';
+import classNames from 'classnames';
 
 import styles from './Ratings.module.css';
 
 interface Props {
     ratingKinopoisk: number;
     ratingImdb: number;
-    reviewsCount: number;
-    ratingGoodReview: number;
+    reviewsCount?: number;
+    ratingGoodReview?: number;
+    className?: string;
 }
 
 export const Ratings: FC<Props> = memo((props: Props) => {
     return (
-        <div className={styles.ratings__wrapper}>
+        <div className={classNames(styles.ratings__wrapper, props.className)}>
             {props.ratingKinopoisk && (
                 <div className={styles.ratings__wrapper__kp}>
                     KP {props.ratingKinopoisk}

@@ -1,44 +1,48 @@
-import React, { FC, useRef, useState, useEffect } from 'react';
+import React, { FC, memo, useEffect, useMemo, useRef, useState } from 'react';
 
+import { useFilms } from '../../hooks/useFilms';
+import useOnScreen from '../../hooks/useOnScreen';
 import { IFilm } from '../../models/IFilm';
-import { kinopoiskApi } from '../../services/KinopoiskService';
 import { Card } from '../../components/Card/Card';
 import { Navbar } from '../../components/Navbar/Navbar';
 import { LoadingSpinner } from '../../components/UI/LoadingSpinner/LoadingSpinner';
 
 import styles from './PremieresPage.module.css';
 
-export const PremieresPage: FC = () => {
-    const [page, setPage] = useState(1);
-    const { data, isError, isLoading } =
-        kinopoiskApi.useFetchByFiltersQuery(page);
-    const [films, setFilms] = useState<IFilm[]>(data.items);
+export const PremieresPage: FC = memo(() => {
+    const [page, setPage] = useState<number>(1);
     const lastItem = useRef<any>(null);
+    const { films, loading, error } = useFilms(page);
+    const [filmsList, setFilmsList] = useState<IFilm[]>([]);
+    const isBottomOfPageVisible = useOnScreen(lastItem);
 
-    // let el = lastItem?.current;
+    useMemo(() => {
+        !loading && !error && page < 20 && setPage(page + 1);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [isBottomOfPageVisible]);
 
     useEffect(() => {
-        if (page > 1) {
-            setFilms([...films, ...data?.items]);
-        } else {
-            setFilms(data?.items);
-        }
+        page === 1
+            ? setFilmsList(films)
+            : setFilmsList([...filmsList, ...films]);
+
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [page]);
+    }, [page, loading, films]);
+
 
     return (
         <div>
             <Navbar />
             <div className={styles.premieresPage__content}>
-                {isLoading && <LoadingSpinner />}
-                {isError && <div>Error!</div>}
-                {films?.length > 0 &&
-                    films.map((film: IFilm, index: number) => {
+                {loading && <LoadingSpinner />}
+                {error && <div>Error!</div>}
+                {filmsList.length > 0 &&
+                    filmsList.map((film: IFilm, index: number) => {
                         return <Card key={film.kinopoiskId} film={film} />;
                     })}
-                <span ref={lastItem} />
             </div>
+            <span ref={lastItem} />
             <button onClick={() => setPage(page + 1)}>MORE</button>
         </div>
     );
-};
+});
