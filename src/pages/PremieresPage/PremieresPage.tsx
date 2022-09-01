@@ -17,8 +17,12 @@ export const PremieresPage: FC = memo(() => {
     const isBottomOfPageVisible = useOnScreen(lastItem);
 
     useMemo(() => {
-        !loading && !error && page < 20 && setPage(page + 1);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        !loading &&
+            !error &&
+            page < 20 &&
+            filmsList.length > 10 &&
+            setPage(page + 1);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isBottomOfPageVisible]);
 
     useEffect(() => {
@@ -28,7 +32,6 @@ export const PremieresPage: FC = memo(() => {
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [page, loading, films]);
-
 
     return (
         <div>
