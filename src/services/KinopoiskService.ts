@@ -7,6 +7,29 @@ export const kinopoiskApi = createApi({
     reducerPath: 'kinopoiskAPI',
     baseQuery: fetchBaseQuery({ baseUrl: 'https://kinopoiskapiunofficial.tech/api' }),
     endpoints: (build) => ({
+
+        // Fetch by filters 
+        fetchByFilters: build.query({
+            query: (page: number) => ({
+                url: '/v2.2/films',
+                params: {
+                    order: 'RATING',
+                    type: 'ALL',
+                    ratingFrom: '0',
+                    ratingTo: '10',
+                    yearFrom: new Date().getFullYear() - 1,
+                    yearTo: new Date().getFullYear(),
+                    page: page
+                },
+                method: 'GET',
+                headers: {
+                    'X-API-KEY': X_API_KEY,
+                    'Content-Type': 'application/json',
+                },
+            }),
+        }),
+
+
         // Fetch premieres
         fetchPremieres: build.query({
             query: () => ({
@@ -38,8 +61,6 @@ export const kinopoiskApi = createApi({
             }),
 
         }),
-
-
 
         // Fetch film by search query
         fetchFilmsBySearch: build.query({
