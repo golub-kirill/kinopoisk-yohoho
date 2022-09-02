@@ -16,8 +16,6 @@ export const PremieresPage: FC = memo(() => {
     const [filmsList, setFilmsList] = useState<IFilm[]>([]);
     const isBottomOfPageVisible = useOnScreen(lastItem);
 
-    console.log(process.env.REACT_APP_KINOPOISK_API_UNOFFICIAL_TOKEN);
-
     useMemo(() => {
         !loading &&
             !error &&
