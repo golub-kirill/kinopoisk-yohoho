@@ -1,7 +1,7 @@
 {
   "name": "kinopoisk-yohoho",
   "version": "0.1.0",
-  "homepage": "https://Fox0x.github.io/kinopoisk-yohoho",
+  "homepage": "https://golub-kirill.github.io/kinopoisk-yohoho",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.3",
