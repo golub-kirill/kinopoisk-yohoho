@@ -4,7 +4,7 @@ import {
     BsBookmarkStar,
     BsPerson,
 } from 'react-icons/bs';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { Button } from '../UI/Button/Button';
 
@@ -15,17 +15,17 @@ interface Props {}
 
 export const Navbar: FC<Props> = memo((props: Props) => {
     const navigate = useNavigate();
-    
+
     return (
         <div className={styles.navBar__wrapper}>
             <div className={styles.navBar__logo}>
-                {document.location.pathname.length > 1  ? (
-                    <NavLink to="/" className={styles.NavLink}>
+                {window.location.href.endsWith('kinopoisk-yohoho#/') ? (
+                    <div>ЛИСИЧКИНО КИНО</div>
+                ) : (
+                    <Link to="/" className={styles.NavLink}>
                         <BsArrowLeftCircleFill id={styles.NavLink_icon} />
                         Main Page
-                    </NavLink>
-                ) : (
-                    <div>ЛИСИЧКИНО КИНО</div>
+                    </Link>
                 )}
             </div>
             <Search />
