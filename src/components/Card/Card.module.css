@@ -18,6 +18,7 @@
 
 .card__poster {
     height: 20rem;
+    width: 15rem;
 }
 
 .card__content {
@@ -61,11 +62,4 @@
     min-width: 25rem;
     align-items: center;
     justify-content: center;
-}
-
-.card__content__info__ratings {
-    position: relative;
-    top: -40rem;
-    left: -47rem;
-    transform: scale(0.9);
 }

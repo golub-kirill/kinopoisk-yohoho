@@ -19,7 +19,7 @@ export const Navbar: FC<Props> = memo((props: Props) => {
     return (
         <div className={styles.navBar__wrapper}>
             <div className={styles.navBar__logo}>
-                {window.location.href.endsWith('kinopoisk-yohoho/#/') ? (
+                {window.location.href.endsWith('kinopoisk-yohoho/#/' || 'kinopoisk-yohoho/') ? (
                     <div>ЛИСИЧКИНО КИНО</div>
                 ) : (
                     <Link to="/" className={styles.NavLink}>
