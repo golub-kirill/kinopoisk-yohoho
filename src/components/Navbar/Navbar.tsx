@@ -2,7 +2,6 @@ import React, { FC, memo } from 'react';
 import {
     BsArrowLeftCircleFill,
     BsBookmarkStar,
-    BsPerson,
 } from 'react-icons/bs';
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -36,14 +35,14 @@ export const Navbar: FC<Props> = memo((props: Props) => {
                     Bookmarks
                 </Button>
 
-                <Button
+                {/* <Button
                     onClick={function (): void {
                         throw new Error('Function not implemented.');
                     }}
                     icon={<BsPerson />}
                     disabled>
                     Login
-                </Button>
+                </Button> */}
             </div>
         </div>
     );
