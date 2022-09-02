@@ -11,10 +11,10 @@ function App() {
         <StrictMode>
             <Router>
                 <Routes>
-                    <Route path="/">
+                    <Route path="/kinopoisk-yohoho">
                         <Route index element={<PremieresPage />} />
-                        <Route path="/:filmId" element={<InfoPage />} />
-                        <Route path="/bookmarks" element={<BookmarksPage />} />
+                        <Route path="/kinopoisk-yohoho/:filmId" element={<InfoPage />} />
+                        <Route path="/kinopoisk-yohoho/bookmarks" element={<BookmarksPage />} />
                     </Route>
                 </Routes>
             </Router>
