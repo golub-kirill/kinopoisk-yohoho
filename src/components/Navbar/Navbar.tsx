@@ -1,8 +1,5 @@
 import React, { FC, memo } from 'react';
-import {
-    BsArrowLeftCircleFill,
-    BsBookmarkStar,
-} from 'react-icons/bs';
+import { BsArrowLeftCircleFill, BsBookmarkStar } from 'react-icons/bs';
 import { Link, useNavigate } from 'react-router-dom';
 
 import { Button } from '../UI/Button/Button';
@@ -18,7 +15,8 @@ export const Navbar: FC<Props> = memo((props: Props) => {
     return (
         <div className={styles.navBar__wrapper}>
             <div className={styles.navBar__logo}>
-                {window.location.href.endsWith('kinopoisk-yohoho/#/' || 'kinopoisk-yohoho/') ? (
+                {window.location.pathname ===
+                ('kinopoisk-yohoho/' || 'kinopoisk-yohoho') ? (
                     <div>ЛИСИЧКИНО КИНО</div>
                 ) : (
                     <Link to="/" className={styles.NavLink}>
