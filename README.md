@@ -108,12 +108,6 @@ Start the server
   npm start
 ```
 
-<!-- License -->
-## License
-
-Distributed under the no License. See LICENSE.txt for more information.
-
-
 <!-- Contact -->
 ## Contact
 
