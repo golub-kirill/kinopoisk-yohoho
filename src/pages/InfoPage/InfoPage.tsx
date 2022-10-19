@@ -27,6 +27,12 @@ export const InfoPage: FC = memo(() => {
 
     const { favorites } = useFavorites();
     const isFavorite = favorites.includes(film?.kinopoiskId!);
+    const mooveToTop = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth',
+        });
+    };
 
     return (
         <div>
@@ -80,8 +86,10 @@ export const InfoPage: FC = memo(() => {
                         </div>
                     </div>
                     <Player filmId={Number(params.filmId)} />
-                    <SequelsAndPrequels filmId={Number(params.filmId)} />
-                    <SimilarFilms filmId={Number(params.filmId)} />
+                    <div onClick={mooveToTop}>
+                        <SequelsAndPrequels filmId={Number(params.filmId)} />
+                        <SimilarFilms filmId={Number(params.filmId)} />
+                    </div>
                 </div>
             )}
         </div>

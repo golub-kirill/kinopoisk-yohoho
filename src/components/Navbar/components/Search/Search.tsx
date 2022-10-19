@@ -26,13 +26,15 @@ export const Search = memo(() => {
                 <BsSearch id={styles.search_icon} />
             </div>
 
-            {searchQuery.length >= 1 && (
+            {searchQuery.length >= 1 && (                
                 <SearchResultWindow
                     searchQuery={debouncedSearch}
                     page={page}
                     setPage={setPage}
                 />
-            )}
+                
+            )
+            }
         </div>
     );
 });

@@ -16,6 +16,7 @@ export const PremieresPage: FC = memo(() => {
     const [filmsList, setFilmsList] = useState<IFilm[]>([]);
     const isBottomOfPageVisible = useOnScreen(lastItem);
 
+    // TODO: Переделай этот трешняк
     useMemo(() => {
         !loading &&
             !error &&
@@ -37,12 +38,13 @@ export const PremieresPage: FC = memo(() => {
         <div>
             <Navbar />
             <div className={styles.premieresPage__content}>
-                {loading && <LoadingSpinner />}
-                {error && <div>Error!</div>}
-                {filmsList.length > 0 &&
+                {filmsList.length > 0 ? (
                     filmsList.map((film: IFilm, index: number) => {
                         return <Card key={film.kinopoiskId} film={film} />;
-                    })}
+                    })
+                ) : (
+                    <LoadingSpinner />
+                )}
             </div>
             <span ref={lastItem} />
             <button onClick={() => setPage(page + 1)}>MORE</button>

@@ -13,9 +13,9 @@ export const kinopoiskApi = createApi({
             query: (page: number) => ({
                 url: '/v2.2/films',
                 params: {
-                    order: 'RATING',
+                    order: 'NUM_VOTE',
                     type: 'ALL',
-                    ratingFrom: '0',
+                    ratingFrom: '5',
                     ratingTo: '10',
                     yearFrom: new Date().getFullYear() - 1,
                     yearTo: new Date().getFullYear(),

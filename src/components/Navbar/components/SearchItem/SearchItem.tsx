@@ -13,7 +13,15 @@ export const SearchItem: FC<Props> = memo((props: Props) => {
     return (
         <NavLink
             to={'/' + props.film.filmId}
-            className={styles.searchItem__wrapper}>
+            className={styles.searchItem__wrapper}
+            onClick={() => {
+                const searchEl = document.getElementById(
+                    'search'
+                ) as HTMLInputElement;
+
+                searchEl.value = '';
+                searchEl.focus();
+            }}>
             <img
                 className={styles.searchItem__image}
                 src={props.film.posterUrlPreview}

@@ -3,12 +3,13 @@
     top: calc(100% + 1rem);
     left: 0;
     width: 100%;
-    height: auto;
+    height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     overflow: hidden;
+    animation: blur 1s linear forwards;
 }
 
 .searchResultWinow__list {
@@ -16,11 +17,13 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    min-width: 25rem;
+    min-height: 25rem;
+    max-height: 30rem;
     width: fit-content;
     padding: 1rem;
     border-radius: 10px;
     background-color: #1e2122;
-    max-height: 30rem;
     overflow-y: auto;
     border: 2px solid #ffffff80;
 }
@@ -43,4 +46,18 @@
     position: sticky;
     bottom: 0;
     z-index: 1;
+}
+
+@keyframes blur {
+
+    0% {
+        backdrop-filter: blur(0);
+
+    }
+
+    100% {
+        backdrop-filter: blur(10px);
+
+    }
+
 }

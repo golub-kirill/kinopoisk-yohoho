@@ -1,4 +1,4 @@
-import React, { FC, memo, useEffect } from 'react';
+import React, { FC, memo, useEffect, useState } from 'react';
 
 import { IFilm } from '../../../../models/IFilm';
 import { kinopoiskApi } from '../../../../services/KinopoiskService';
@@ -14,39 +14,44 @@ interface Props {
 }
 
 export const SearchResultWindow: FC<Props> = memo((props: Props) => {
-    const { data, isLoading, isError } =
-        kinopoiskApi.useFetchFilmsBySearchQuery({
-            searchQuery: props.searchQuery,
-            page: props.page,
-        });
+    const { data, isLoading } = kinopoiskApi.useFetchFilmsBySearchQuery({
+        searchQuery: props.searchQuery,
+        page: props.page,
+    });
 
-    const [films, setFilms] = React.useState<IFilm[]>([]);
+    const [visible, setVisible] = useState<Boolean>(false);
 
     useEffect(() => {
-        setFilms(data?.films);
-    }, [data, props.searchQuery]);
+        if (!visible && props.searchQuery.length > 0) {
+            setVisible(true);
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [props.searchQuery]);
+
+    if (!visible) return null;
 
     return (
-        <div className={styles.searchResultWindow__wrapper}>
-            {isLoading ? (
-                <LoadingSpinner />
-            ) : films?.length ? (
-                <div className={styles.searchResultWinow__list}>
-                    {films?.map((film: IFilm) => (
+        <div className={styles.searchResultWindow__wrapper} id="search-window">
+            <div
+                className={styles.searchResultWinow__list}
+                onClick={() => {
+                    setVisible(false);
+                }}>
+                {isLoading || data?.films.length === 0 ? (
+                    <LoadingSpinner />
+                ) : (
+                    data?.films.map((film: IFilm) => (
                         <SearchItem film={film} key={film.filmId} />
-                    ))}
-                    {data?.totalPages > 1 && (
-                        <button
-                            className={styles.searchResultWinow__nextButton}
-                            onClick={() => props.setPage(props.page + 1)}>
-                            Next Page
-                        </button>
-                    )}
-                </div>
-            ) : (
-                <LoadingSpinner />
-            )}
-            {isError && <div>Error</div>}
+                    ))
+                )}
+                {data?.totalPages > 1 && (
+                    <button
+                        className={styles.searchResultWinow__nextButton}
+                        onClick={() => props.setPage(props.page + 1)}>
+                        Next Page
+                    </button>
+                )}
+            </div>
         </div>
     );
 });

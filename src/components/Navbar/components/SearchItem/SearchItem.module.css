@@ -1,11 +1,11 @@
 .searchItem__wrapper {
     display: flex;
-    flex-direction: row ;
+    flex-direction: row;
     align-items: center;
     width: 25rem;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
-    margin: 1rem 0 0 0 ;
+    margin: 1rem 0 0 0;
     text-decoration: none;
     color: inherit;
 }
@@ -19,7 +19,7 @@
 
 .searchItem__image {
     height: 6rem;
- }
+}
 
 .searchItem__info {
     display: flex;
