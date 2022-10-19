@@ -42,8 +42,6 @@
   * [Tech Stack](#tech-stack)
 - [Getting Started](#getting-started)
   * [Run Locally](#run-locally)
-- [Usage](#usage)
-- [License](#license)
 - [Contact](#contact)
   
 
