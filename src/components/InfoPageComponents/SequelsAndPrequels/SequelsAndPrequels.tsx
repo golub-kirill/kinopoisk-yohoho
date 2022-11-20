@@ -19,7 +19,7 @@ export const SequelsAndPrequels: FC<Props> = memo(({ filmId }) => {
     return (
         <>
             {isLoading && <div>Loading...</div>}
-            {films?.length && (
+            {films?.length > 0 && (
                 <div className={styles.sequelsAndPrequels__wrapper}>
                     <p className={styles.sequelsAndPrequels__title}>
                         Sequels and Prequels

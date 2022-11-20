@@ -21,10 +21,9 @@ export const SimilarFilms: FC<Props> = memo((props: Props) => {
     return (
         <>
             {isLoading && <LoadingSpinner />}
-            {films?.length && (
+            {films?.length > 0 && (
                 <div className={styles.similarFilms__wrapper}>
                     <p className={styles.similarFilms__title}>Similar Films</p>
-
                     <div className={styles.similarFilms}>
                         {films.map((film: IFilm) => (
                             <HorizontalCard key={film.filmId} film={film} />
