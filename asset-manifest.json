@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/kinopoisk-yohoho/static/css/main.22f53152.css",
-    "main.js": "/kinopoisk-yohoho/static/js/main.302c62a1.js",
+    "main.css": "/kinopoisk-yohoho/static/css/main.7c25ec34.css",
+    "main.js": "/kinopoisk-yohoho/static/js/main.37315194.js",
     "index.html": "/kinopoisk-yohoho/index.html",
-    "main.22f53152.css.map": "/kinopoisk-yohoho/static/css/main.22f53152.css.map",
-    "main.302c62a1.js.map": "/kinopoisk-yohoho/static/js/main.302c62a1.js.map"
+    "main.7c25ec34.css.map": "/kinopoisk-yohoho/static/css/main.7c25ec34.css.map",
+    "main.37315194.js.map": "/kinopoisk-yohoho/static/js/main.37315194.js.map"
   },
   "entrypoints": [
-    "static/css/main.22f53152.css",
-    "static/js/main.302c62a1.js"
+    "static/css/main.7c25ec34.css",
+    "static/js/main.37315194.js"
   ]
 }
