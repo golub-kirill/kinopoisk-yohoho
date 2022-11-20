@@ -1,6 +1,7 @@
 export interface IFilm {
     kinopoiskId?: number | undefined;
-    filmId: number;
+    filmId: string;
+    imdbId: string | undefined;
     nameRu: string;
     nameEn: string;
     nameOriginal: string;

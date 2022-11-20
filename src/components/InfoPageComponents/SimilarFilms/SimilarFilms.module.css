@@ -1,5 +1,5 @@
 .similarFilms__wrapper {
-    max-width: 80vw;
+    flex-flow: column nowrap;
 }
 
 .similarFilms__title {
@@ -16,7 +16,12 @@
     overflow-x: scroll;
 }
 
-.similarFilms::-webkit-scrollbar {
-    width: 0;
-    opacity: 0;
+
+.similarFilms::-webkit-scrollbar{
+    background-color: #181a1b;
+}
+
+.similarFilms::-webkit-scrollbar-thumb {
+    background-color: #ffffff80;
+    border-radius: 5px;
 }

@@ -17,20 +17,20 @@ export const SequelsAndPrequels: FC<Props> = memo(({ filmId }) => {
     const films: IFilm[] = data;
 
     return (
-        <div>
+        <>
             {isLoading && <div>Loading...</div>}
-            {films?.length ? (
+            {films?.length && (
                 <div className={styles.sequelsAndPrequels__wrapper}>
-                    <div className={styles.sequelsAndPrequels__title}>
+                    <p className={styles.sequelsAndPrequels__title}>
                         Sequels and Prequels
-                    </div>
+                    </p>
                     <div className={styles.sequelsAndPrequels}>
                         {films.map((film: IFilm) => (
                             <HorizontalCard key={film.filmId} film={film} />
                         ))}
                     </div>
                 </div>
-            ) : null}
-        </div>
+            )}
+        </>
     );
 });

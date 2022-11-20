@@ -19,20 +19,19 @@ export const SimilarFilms: FC<Props> = memo((props: Props) => {
     const films: IFilm[] = data?.items;
 
     return (
-        <div>
+        <>
             {isLoading && <LoadingSpinner />}
-            {films?.length ? (
+            {films?.length && (
                 <div className={styles.similarFilms__wrapper}>
-                    <div className={styles.similarFilms__title}>
-                        Similar Films
-                    </div>
+                    <p className={styles.similarFilms__title}>Similar Films</p>
+
                     <div className={styles.similarFilms}>
                         {films.map((film: IFilm) => (
                             <HorizontalCard key={film.filmId} film={film} />
                         ))}
                     </div>
                 </div>
-            ) : null}
-        </div>
+            )}
+        </>
     );
 });

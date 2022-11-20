@@ -1,5 +1,5 @@
 .sequelsAndPrequels__wrapper {
-    max-width: 80vw;
+    flex-flow: row nowrap;
 }
 
 .sequelsAndPrequels__title {
@@ -17,6 +17,10 @@
 }
 
 .sequelsAndPrequels::-webkit-scrollbar {
-    width: 0;
-    opacity: 0;
+    background-color: #181a1b;
+}
+
+.sequelsAndPrequels::-webkit-scrollbar-thumb {
+    background-color: #ffffff80;
+    border-radius: 5px;
 }

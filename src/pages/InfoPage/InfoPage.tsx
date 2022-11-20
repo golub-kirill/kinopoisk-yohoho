@@ -85,7 +85,7 @@ export const InfoPage: FC = memo(() => {
                             <Staff filmId={Number(params.filmId)} />
                         </div>
                     </div>
-                    <Player filmId={Number(params.filmId)} />
+                    <Player filmId={params.filmId} imdbId={film.imdbId}/>
                     <div onClick={mooveToTop}>
                         <SequelsAndPrequels filmId={Number(params.filmId)} />
                         <SimilarFilms filmId={Number(params.filmId)} />
