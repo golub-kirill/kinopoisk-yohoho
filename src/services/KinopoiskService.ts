@@ -26,27 +26,27 @@ export const kinopoiskApi = createApi({
         }),
 
         // Fetch by filters
-        fetchByFilters: build.query({
-            query: (page: number) => ({
-                url: '/v2.2/films',
-                params: {
-                    order: 'RATING',
-                    type: 'ALL',
-                    ratingFrom: '5',
-                    ratingTo: '10',
-                    yearFrom: new Date().getFullYear() - 1,
-                    yearTo: new Date().getFullYear(),
-                    page: page,
-                },
-                method: 'GET',
-                headers: {
-                    'X-API-KEY': X_API_KEY,
-                    'Content-Type': 'application/json',
-                },
-            }),
-        }),
+        // fetchByFilters: build.query({
+        //     query: (page: number) => ({
+        //         url: '/v2.2/films',
+        //         params: {
+        //             order: 'RATING',
+        //             type: 'ALL',
+        //             ratingFrom: '5',
+        //             ratingTo: '10',
+        //             yearFrom: new Date().getFullYear() - 1,
+        //             yearTo: new Date().getFullYear(),
+        //             page: page,
+        //         },
+        //         method: 'GET',
+        //         headers: {
+        //             'X-API-KEY': X_API_KEY,
+        //             'Content-Type': 'application/json',
+        //         },
+        //     }),
+        // }),
 
-        //         // Fetch premieres
+        // Fetch premieres
         //         fetchPremieres: build.query({
         //             query: () => ({
         //                 url: '/v2.2/films/premieres',
