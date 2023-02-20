@@ -18,12 +18,12 @@ export const PremieresPage: FC = memo(() => {
 
     // TODO: Переделай этот трешняк
     useMemo(() => {
-        !loading &&
-            !error &&
-            page < 20 &&
-            filmsList.length > 10 &&
-            setPage(page + 1);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
+        // !loading &&
+        //     !error &&
+        //     page < 20 &&
+        //     filmsList.length > 10 &&
+        //     setPage(page + 1);
+        // // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isBottomOfPageVisible]);
 
     useEffect(() => {
@@ -40,7 +40,7 @@ export const PremieresPage: FC = memo(() => {
             <div className={styles.premieresPage__content}>
                 {filmsList.length > 0 ? (
                     filmsList.map((film: IFilm, index: number) => {
-                        return <Card key={film.kinopoiskId} film={film} />;
+                        return <Card key={film.kinopoiskId} film={film}/>;
                     })
                 ) : (
                     <LoadingSpinner />

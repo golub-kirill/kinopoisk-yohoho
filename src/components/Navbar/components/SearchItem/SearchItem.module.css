@@ -11,10 +11,9 @@
 }
 
 .searchItem__wrapper:hover {
-    transform: scale(1.05);
+    transform: scale(1.03);
     background-color: #181818;
     border-radius: 5px;
-    padding-right: 1rem;
 }
 
 .searchItem__image {
