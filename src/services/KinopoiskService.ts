@@ -5,21 +5,38 @@ import { IFilm } from '../models/IFilm';
 
 export const kinopoiskApi = createApi({
     reducerPath: 'kinopoiskAPI',
-    baseQuery: fetchBaseQuery({ baseUrl: 'https://kinopoiskapiunofficial.tech/api' }),
+    baseQuery: fetchBaseQuery({
+        baseUrl: 'https://kinopoiskapiunofficial.tech/api',
+    }),
     endpoints: (build) => ({
+        // Fetch TOP 100
+        fetchTopFilms: build.query({
+            query: (page: number) => ({
+                url: '/v2.2/films/top',
+                params: {
+                    type: 'TOP_100_POPULAR_FILMS', //'TOP_100_POPULAR_FILMS' 'TOP_250_BEST_FILMS' 'TOP_AWAIT_FILMS'
+                    page: page,
+                },
+                method: 'GET',
+                headers: {
+                    'x-api-key': X_API_KEY,
+                    'Content-Type': 'application/json',
+                },
+            }),
+        }),
 
-        // Fetch by filters 
+        // Fetch by filters
         fetchByFilters: build.query({
             query: (page: number) => ({
                 url: '/v2.2/films',
                 params: {
-                    order: 'NUM_VOTE',
+                    order: 'RATING',
                     type: 'ALL',
                     ratingFrom: '5',
                     ratingTo: '10',
                     yearFrom: new Date().getFullYear() - 1,
                     yearTo: new Date().getFullYear(),
-                    page: page
+                    page: page,
                 },
                 method: 'GET',
                 headers: {
@@ -29,24 +46,23 @@ export const kinopoiskApi = createApi({
             }),
         }),
 
-
-        // Fetch premieres
-        fetchPremieres: build.query({
-            query: () => ({
-                url: '/v2.2/films/premieres',
-                params: {
-                    year: new Date().getFullYear(),
-                    month: new Date().toLocaleString('en-us', { month: 'long' }),
-                },
-                method: 'GET',
-                headers: {
-                    'X-API-KEY': X_API_KEY,
-                    'Content-Type': 'application/json',
-                },
-
-            }),
-
-        }),
+        //         // Fetch premieres
+        //         fetchPremieres: build.query({
+        //             query: () => ({
+        //                 url: '/v2.2/films/premieres',
+        //                 params: {
+        //                     year: new Date().getFullYear(),
+        //                     month: new Date().toLocaleString('en-us', { month: 'long' }),
+        //                 },
+        //                 method: 'GET',
+        //                 headers: {
+        //                     'X-API-KEY': X_API_KEY,
+        //                     'Content-Type': 'application/json',
+        //                 },
+        //
+        //             }),
+        //
+        //         }),
 
         // Fetch info about film by id
         fetchFilmById: build.query<IFilm, number>({
@@ -57,14 +73,12 @@ export const kinopoiskApi = createApi({
                     'X-API-KEY': X_API_KEY,
                     'Content-Type': 'application/json',
                 },
-
             }),
-
         }),
 
         // Fetch film by search query
         fetchFilmsBySearch: build.query({
-            query: (props: { searchQuery: string, page: number }) => ({
+            query: (props: { searchQuery: string; page: number }) => ({
                 url: '/v2.1/films/search-by-keyword',
                 params: {
                     keyword: props.searchQuery,
@@ -117,5 +131,4 @@ export const kinopoiskApi = createApi({
             }),
         }),
     }),
-
 });

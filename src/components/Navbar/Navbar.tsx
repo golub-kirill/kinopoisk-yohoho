@@ -1,5 +1,5 @@
 import React, { FC, memo } from 'react';
-import { BsArrowLeftCircleFill, BsBookmarkStar } from 'react-icons/bs';
+import { BsArrowLeftCircleFill, BsBookmarkStar, BsPerson } from 'react-icons/bs';
 import { Link, useNavigate } from 'react-router-dom';
 
 import { Button } from '../UI/Button/Button';
@@ -30,7 +30,7 @@ export const Navbar: FC<Props> = memo((props: Props) => {
                 <Button
                     onClick={() => navigate('/bookmarks')}
                     icon={<BsBookmarkStar />}>
-                    Bookmarks
+                    Bookmarks 
                 </Button>
 
                 {/* <Button

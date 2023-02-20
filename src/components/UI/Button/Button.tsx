@@ -18,6 +18,7 @@ export const Button: FC<Props> = (props: Props) => {
             onClick={() => props.onClick()}
             disabled={props.disabled}>
             {props.children}
+            &nbsp;
             {props.icon}
         </button>
     );

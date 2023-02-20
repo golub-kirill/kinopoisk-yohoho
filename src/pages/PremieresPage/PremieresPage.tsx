@@ -38,13 +38,12 @@ export const PremieresPage: FC = memo(() => {
         <div>
             <Navbar />
             <div className={styles.premieresPage__content}>
-                {filmsList.length > 0 ? (
+                {loading && <LoadingSpinner />}
+                {error && <p>Error: {error}</p>}
+                {filmsList?.length > 0 &&
                     filmsList.map((film: IFilm, index: number) => {
-                        return <Card key={film.kinopoiskId} film={film}/>;
-                    })
-                ) : (
-                    <LoadingSpinner />
-                )}
+                        return <Card key={index} film={film} />;
+                    })}
             </div>
             <span ref={lastItem} />
             <button onClick={() => setPage(page + 1)}>MORE</button>
