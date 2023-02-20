@@ -11,28 +11,31 @@ import styles from './BookmarksPage.module.css';
 export const BookmarksPage = () => {
     const { favorites } = useFavorites();
 
-
     return (
         <div>
-            <Navbar/>
+            <Navbar />
             <div className={styles.bookmarkPage}>
-            {favorites.map((filmId) => {
-                const {
-                    data: film,
-                    isError,
-                    isLoading,
-                } = kinopoiskApi.useFetchFilmByIdQuery(filmId);
-                if (isLoading) {
-                    return <LoadingSpinner/>;
-                }
-                if (isError) {
-                    return <div>Error!</div>;
-                }
-                if (film) {
-                    return <Card key={film?.kinopoiskId} film={film} />;
-                }
-                return null;
-            })}
+                {favorites.length === 0 ? (
+                    <h2>Nothing yet...</h2>
+                ) : (
+                    favorites.map((filmId) => {
+                        const {
+                            data: film,
+                            isError,
+                            isLoading,
+                        } = kinopoiskApi.useFetchFilmByIdQuery(filmId);
+                        if (isLoading) {
+                            return <LoadingSpinner />;
+                        }
+                        if (isError) {
+                            return <div>Error!</div>;
+                        }
+                        if (film) {
+                            return <Card key={film?.kinopoiskId} film={film} />;
+                        }
+                        return null;
+                    })
+                )}
             </div>
         </div>
     );
