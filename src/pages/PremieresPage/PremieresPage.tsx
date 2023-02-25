@@ -10,29 +10,29 @@ import { LoadingSpinner } from '../../components/UI/LoadingSpinner/LoadingSpinne
 import styles from './PremieresPage.module.css';
 
 export const PremieresPage: FC = memo(() => {
-    const [page, setPage] = useState<number>(1);
     const lastItem = useRef<any>(null);
-    const { films, loading, error } = useFilms(page);
+    const { films, loading, error, currentPage, loadMore } =
+        useFilms();
     const [filmsList, setFilmsList] = useState<IFilm[]>([]);
     const isBottomOfPageVisible = useOnScreen(lastItem);
 
     // TODO: Переделай этот трешняк
     useMemo(() => {
-        // !loading &&
-        //     !error &&
-        //     page < 20 &&
-        //     filmsList.length > 10 &&
-        //     setPage(page + 1);
-        // // eslint-disable-next-line react-hooks/exhaustive-deps
+        (!loading && !error && isBottomOfPageVisible === true) && loadMore();
+        return () => {
+            lastItem.current = null;
+        };
     }, [isBottomOfPageVisible]);
 
     useEffect(() => {
-        page === 1
-            ? setFilmsList(films)
-            : setFilmsList([...filmsList, ...films]);
+        if (!loading) {
+            // console.log('currentPage', currentPage);
 
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [page, loading, films]);
+            currentPage === 1
+                ? setFilmsList(films)
+                : setFilmsList([filmsList[10], ...films]);
+        }
+    }, [currentPage]);
 
     return (
         <div>
@@ -46,7 +46,6 @@ export const PremieresPage: FC = memo(() => {
                     })}
             </div>
             <span ref={lastItem} />
-            <button onClick={() => setPage(page + 1)}>MORE</button>
         </div>
     );
 });

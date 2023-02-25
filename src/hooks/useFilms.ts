@@ -3,15 +3,21 @@ import { useMemo, useState } from 'react';
 import { IFilm } from '../models/IFilm';
 import { kinopoiskApi } from '../services/KinopoiskService';
 
-export const useFilms = (page: number) => {
+export const useFilms = () => {
     const [totalPages, setTotalPages] = useState(1);
-    const currentPage = (page <= totalPages ? page : totalPages) || 1;
-
+    const [currentPage, setCurrentPage] = useState(1);
+    console.log('Page ', currentPage);
+    
     const { data, isError, isLoading } =
         kinopoiskApi.useFetchTopFilmsQuery(currentPage);
 
+    const loadMore = () => {
+        setCurrentPage(currentPage + 1);
+    };
+
     return useMemo(() => {
         setTotalPages(data?.pagesCount || 1);
+        setCurrentPage(currentPage <= totalPages ? currentPage : totalPages);
 
         let loading = true;
         let error = true;
@@ -23,8 +29,8 @@ export const useFilms = (page: number) => {
             films = data.films;
         }
 
-        return { films, loading, error };
+        return { films, loading, error, currentPage, loadMore };
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [page, isLoading, isError]);
+    }, [currentPage, isLoading, isError]);
 };
