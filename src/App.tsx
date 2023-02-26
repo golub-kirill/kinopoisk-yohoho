@@ -4,7 +4,7 @@ import { Routes, Route, HashRouter, Navigate } from 'react-router-dom';
 import './App.css';
 import { BookmarksPage } from './pages/BookmarksPage/BookmarksPage';
 import { InfoPage } from './pages/InfoPage/InfoPage';
-import { PremieresPage } from './pages/PremieresPage/PremieresPage';
+import  {PremieresPage} from './pages/PremieresPage/PremieresPage';
 
 function App() {
     return (

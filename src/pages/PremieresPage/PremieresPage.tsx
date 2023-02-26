@@ -10,29 +10,25 @@ import { LoadingSpinner } from '../../components/UI/LoadingSpinner/LoadingSpinne
 import styles from './PremieresPage.module.css';
 
 export const PremieresPage: FC = memo(() => {
-    const lastItem = useRef<any>(null);
-    const { films, loading, error, currentPage, loadMore } =
-        useFilms();
+    const lastItem = useRef<HTMLSpanElement>(null);
+    const { films, loading, error, currentPage, loadMore } = useFilms();
     const [filmsList, setFilmsList] = useState<IFilm[]>([]);
     const isBottomOfPageVisible = useOnScreen(lastItem);
 
-    // TODO: Переделай этот трешняк
-    useMemo(() => {
-        (!loading && !error && isBottomOfPageVisible === true) && loadMore();
-        return () => {
-            lastItem.current = null;
-        };
-    }, [isBottomOfPageVisible]);
-
     useEffect(() => {
-        if (!loading) {
-            // console.log('currentPage', currentPage);
+        if (!loading && films.length > 0) {
+            const updatedFilmsList =
+                currentPage === 1 ? films : [...filmsList, ...films];
 
-            currentPage === 1
-                ? setFilmsList(films)
-                : setFilmsList([filmsList[10], ...films]);
+            setFilmsList(updatedFilmsList);
         }
-    }, [currentPage]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [currentPage, loading]);
+
+    useMemo(() => {
+        !loading && !error && isBottomOfPageVisible === true && loadMore();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [loading, error, isBottomOfPageVisible]);
 
     return (
         <div>
@@ -45,7 +41,10 @@ export const PremieresPage: FC = memo(() => {
                         return <Card key={index} film={film} />;
                     })}
             </div>
-            <span ref={lastItem} />
+            <span
+                ref={lastItem}
+                style={{ border: '1px solid red', height: '5rem' }}
+            />
         </div>
     );
 });
