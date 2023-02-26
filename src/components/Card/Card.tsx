@@ -10,47 +10,45 @@ interface Props {
     film: IFilm;
 }
 
-export const Card: FC<Props> = memo((props: Props) => {
+export const Card: FC<Props> = memo(({ film }) => {
     const navigate = useNavigate();
 
     const genresList = useCallback(() => {
-        return props.film.genres?.map(
-            (genre): string => Object.values(genre)[0]
-        );
-    }, [props.film.genres]);
+        return film.genres?.map((genre): string => Object.values(genre)[0]);
+    }, [film.genres]);
 
     const countriesList = useCallback(() => {
-        return props.film.countries
+        return film.countries
             ?.map((country): object => Object.values(country))
             .join(' | ');
-    }, [props.film.countries]);
+    }, [film.countries]);
 
-    return (
+    return film.countries.some(
+        (country) => Object.values(country)[0] === ' ' // Set any country to skip this country films
+    ) ? null : (
         <div
             className={styles.card}
-            onClick={() =>
-                navigate(`/${props.film.kinopoiskId || props.film.filmId}`)
-            }>
+            onClick={() => navigate(`/${film.kinopoiskId || film.filmId}`)}>
             <img
                 className={styles.card__poster}
-                src={props.film.posterUrlPreview}
-                alt={props.film.nameRu}
+                src={film.posterUrlPreview}
+                alt={film.nameRu}
                 loading="lazy"
             />
             <div className={styles.card__content}>
                 <div className={styles.card__content__title}>
                     <span className={styles.card__content__title__ru}>
-                        {props.film.nameRu + ' '}
+                        {film.nameRu + ' '}
                     </span>
-                    {props.film.nameEn && (
+                    {film.nameEn && (
                         <p className={styles.card__content__title__en}>
-                            {`(${props.film.nameEn})`}
+                            {`(${film.nameEn})`}
                         </p>
                     )}
                 </div>
                 <div className={styles.card__content__info}>
                     <span className={styles.card__content__info__year}>
-                        {props.film.year}
+                        {film.year}
                     </span>
                     <span className={styles.card__content__info__country}>
                         {countriesList()}

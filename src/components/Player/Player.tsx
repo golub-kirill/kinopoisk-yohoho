@@ -24,11 +24,18 @@ export const Player: FC<Props> = memo(({ filmId, imdbId }) => {
         };
     }, [filmId, imdbId]);
 
-    if (!filmId || !imdbId) return null;;
+    if (!filmId || !imdbId) return null;
 
     return (
         <div className={styles.player__wrapper}>
-            <div id="yohoho" data-kinopoisk={filmId}></div>
+            {filmId ? (
+                <div id="yohoho" data-kinopoisk={filmId}></div>
+            ) : (
+                <div
+                    id="yohoho"
+                    data-player="videospider"
+                    data-imdb={filmId}></div>
+            )}
         </div>
     );
 });
