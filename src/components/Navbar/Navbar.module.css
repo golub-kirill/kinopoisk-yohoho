@@ -14,20 +14,12 @@
     border-bottom: 2px solid #ffffff80;
 }
 
-.navBar__logo {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 1rem;
+.navBar__logo { 
+    transform: scale(0.4);
+    cursor: pointer;
+    margin-left: -3rem;
 }
 
-.NavLink {
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    color: inherit;
-    font-size: 1.1rem;
-}
 
 #NavLink_icon {
     margin: 0 1rem;

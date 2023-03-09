@@ -1,8 +1,9 @@
-import React, { FC, memo, useCallback } from 'react';
+import React, { FC, memo, useCallback, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { IFilm } from '../../models/IFilm';
 import { GenreTile } from '../UI/GenreTile/GenreTile';
+import placeholder from '../../assets/placeholder.svg';
 
 import styles from './Card.module.css';
 
@@ -23,26 +24,29 @@ export const Card: FC<Props> = memo(({ film }) => {
             .join(' | ');
     }, [film.countries]);
 
-    return film.countries.some(
-        (country) => Object.values(country)[0] === ' ' // Set any country to skip this country films
-    ) ? null : (
+    if (film.countries.some((country) => Object.values(country)[0] === ' ')) {
+        return null;
+    }
+
+    return (
         <div
             className={styles.card}
             onClick={() => navigate(`/${film.kinopoiskId || film.filmId}`)}>
             <img
                 className={styles.card__poster}
-                src={film.posterUrlPreview}
-                alt={film.nameRu}
+                src={film.posterUrlPreview || placeholder}
+                alt={film.nameEn}
                 loading="lazy"
             />
+
             <div className={styles.card__content}>
                 <div className={styles.card__content__title}>
                     <span className={styles.card__content__title__ru}>
-                        {film.nameRu + ' '}
+                        {(film.nameEn || film.nameRu) + ' ' }
                     </span>
                     {film.nameEn && (
                         <p className={styles.card__content__title__en}>
-                            {`(${film.nameEn})`}
+                            {film.nameRu || ''}
                         </p>
                     )}
                 </div>

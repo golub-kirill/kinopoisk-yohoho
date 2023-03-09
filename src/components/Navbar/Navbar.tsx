@@ -1,8 +1,13 @@
 import React, { FC, memo } from 'react';
-import { BsArrowLeftCircleFill, BsBookmarkStar, BsPerson } from 'react-icons/bs';
+import {
+    BsArrowLeftCircleFill,
+    BsBookmarkStar,
+    BsPerson,
+} from 'react-icons/bs';
 import { Link, useNavigate } from 'react-router-dom';
 
 import { Button } from '../UI/Button/Button';
+import Logo from '../../assets/logo.png';
 
 import styles from './Navbar.module.css';
 import { Search } from './components/Search/Search';
@@ -14,23 +19,22 @@ export const Navbar: FC<Props> = memo((props: Props) => {
 
     return (
         <div className={styles.navBar__wrapper}>
-            <div className={styles.navBar__logo}>
-                {window.location.hash ===
-                ('' || '#/') ? (
-                    <div>ЛИСИЧКИНО КИНО</div>
-                ) : (
-                    <Link to="/" className={styles.NavLink}>
-                        <BsArrowLeftCircleFill id={styles.NavLink_icon} />
-                        Main Page
-                    </Link>
-                )}
-            </div>
+            {window.location.hash === ('' || '#/') ? (
+                <img className={styles.navBar__logo} src={Logo} alt="logo" />
+            ) : (
+                <Button
+                    onClick={() => navigate('/')}
+                    icon={<BsArrowLeftCircleFill />}>
+                    Main Page
+                </Button>
+            )}
+
             <Search />
             <div className={styles.navBar__menu}>
                 <Button
                     onClick={() => navigate('/bookmarks')}
                     icon={<BsBookmarkStar />}>
-                    Bookmarks 
+                    Bookmarks
                 </Button>
 
                 {/* <Button
