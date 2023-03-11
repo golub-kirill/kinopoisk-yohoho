@@ -5,6 +5,7 @@ import { Card } from '../../components/Card/Card';
 import { kinopoiskApi } from '../../services/KinopoiskService';
 import { Navbar } from '../../components/Navbar/Navbar';
 import { LoadingSpinner } from '../../components/UI/LoadingSpinner/LoadingSpinner';
+import { IFilm } from '../../models/IFilm';
 
 import styles from './BookmarksPage.module.css';
 
@@ -18,21 +19,13 @@ export const BookmarksPage = () => {
                 {favorites.length === 0 ? (
                     <h2>Nothing yet...</h2>
                 ) : (
-                    favorites.map((filmId) => {
-                        const {
-                            data: film,
-                            isError,
-                            isLoading,
-                        } = kinopoiskApi.useFetchFilmByIdQuery(filmId);
-                        if (isLoading) {
-                            return <LoadingSpinner />;
-                        }
-                        if (isError) {
-                            return <div>Error!</div>;
-                        }
+                    favorites.map((film) => {
+                        // const film: IFilm = JSON.parse(element);
+
                         if (film) {
-                            return <Card key={film?.kinopoiskId} film={film} />;
+                            return <Card key={film.filmId} film={film} />;
                         }
+
                         return null;
                     })
                 )}

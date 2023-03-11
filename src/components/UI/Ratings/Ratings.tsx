@@ -6,42 +6,48 @@ import styles from './Ratings.module.css';
 interface Props {
     ratingKinopoisk: number;
     ratingImdb: number;
-    reviewsCount?: number;
-    ratingGoodReview?: number;
     className?: string;
 }
 
-export const Ratings: FC<Props> = memo((props: Props) => {
-    return (
-        <div className={classNames(styles.ratings__wrapper, props.className)}>
-            {props.ratingKinopoisk && (
-                <div className={styles.ratings__wrapper__kp}>
-                    KP {props.ratingKinopoisk}
-                </div>
-            )}
-            {props.ratingImdb && (
-                <div className={styles.ratings__wrapper__imdb}>
-                    IM {props.ratingImdb}
-                </div>
-            )}
-            {props.reviewsCount && props.ratingGoodReview ? (
-                <div className={styles.votes}>
-                    <label htmlFor="votes">
-                        A total of {props.ratingGoodReview}% positive out of{' '}
-                        {props.reviewsCount} evaluations
-                    </label>
-                    <div className={styles.progress__container}>
-                        <progress
-                            id="votes"
-                            value={
-                                (props.reviewsCount * props.ratingGoodReview) /
-                                100
-                            }
-                            max={props.reviewsCount}
-                        />
+export const Ratings: FC<Props> = memo(
+    ({ ratingKinopoisk, ratingImdb, className }) => {
+        if (ratingKinopoisk && ratingImdb === 0) return null;
+        
+        // Define color constants
+        const GREEN = '#008000';
+        const YELLOW = '#997a00';
+        const ORANGE = '#e05601';
+
+        // Calculate background colors for each rating
+        const backgroundColorKp =
+            ratingKinopoisk >= 7
+                ? GREEN
+                : ratingKinopoisk >= 5
+                ? YELLOW
+                : ORANGE;
+        const backgroundColorImdb =
+            ratingImdb >= 7 ? GREEN : ratingImdb >= 5 ? YELLOW : ORANGE;
+
+        // Render the ratings with the calculated background colors
+        return (
+            <div className={classNames(styles.ratings__wrapper, className)}>
+                {/* Render Kinopoisk rating if it exists */}
+                {ratingKinopoisk && (
+                    <div
+                        style={{ backgroundColor: backgroundColorKp }}
+                        className={styles.ratings__wrapper__kp}>
+                        KP {ratingKinopoisk}
                     </div>
-                </div>
-            ) : null}
-        </div>
-    );
-});
+                )}
+                {/* Render IMDB rating if it exists */}
+                {ratingImdb && (
+                    <div
+                        style={{ backgroundColor: backgroundColorImdb }}
+                        className={styles.ratings__wrapper__imdb}>
+                        IM {ratingImdb}
+                    </div>
+                )}
+            </div>
+        );
+    }
+);

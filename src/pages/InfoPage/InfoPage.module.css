@@ -1,6 +1,6 @@
 .infoPage {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: flex-start;
     justify-content: flex-start;
     width: 80vw;
@@ -16,8 +16,8 @@
     justify-content: center;
 }
 
-.infoPage__content__poster {
-    max-width: 45vw;
+.infoPage__content__poster img {
+    width: 20rem;
     margin: 0 2.5vw 0 0;
 }
 
@@ -58,4 +58,48 @@
     opacity: 0.5;
     font-size: 0.8rem;
     margin: 0 0 2rem 0;
+}
+
+@media screen and (max-width: 768px) {
+    .infoPage {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .infoPage__content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .infoPage__content__poster img {
+        width: 100%;
+        margin: 0 0 2rem 0;
+    }
+
+    .infoPage__content__info__title__ru {
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    .infoPage__content__info__title__en {
+        margin: 0 0 1rem 0;
+        text-align: center;
+    }
+
+    .infoPage__ageLimit {
+        margin: 0.5rem 0 0 0;
+        text-align: center;
+    }
+
+    .infoPage__content__info__buttons {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 1rem 0 0 0;
+    }
+
+    .infoPage__content__info__about__lable {
+        text-align: center;
+        margin: 0.5rem 0 0 0;
+    }
 }

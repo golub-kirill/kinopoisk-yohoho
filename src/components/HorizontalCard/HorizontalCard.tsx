@@ -16,7 +16,7 @@ export const HorizontalCard: FC<Props> = memo((props: Props) => {
         <div
             className={styles.horizontalCard}
             onClick={() =>
-                navigate(`/${props.film.kinopoiskId || props.film.filmId}`)
+                navigate(`/${props.film.filmId || props.film.filmId}`)
             }>
             <img
                 className={styles.horizontalCard__poster}

@@ -6,23 +6,24 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 5rem;
+    height: 4rem;
     z-index: 9999;
     background-color: #181818;
-    border-bottom-right-radius: 15px;
-    border-bottom-left-radius: 15px;
+
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
     border-bottom: 2px solid #ffffff80;
 }
 
-.navBar__logo { 
-    transform: scale(0.4);
+.navBar__logo {
+    transform: scale(0.3) ;
     cursor: pointer;
     margin-left: -3rem;
 }
 
 
 #NavLink_icon {
-    margin: 0 1rem;
+    margin: 0 0.5rem;
 }
 
 .navBar__menu {
@@ -30,4 +31,75 @@
     flex-flow: row wrap;
     align-items: center;
     margin: 0 1rem;
+}
+
+@media screen and (max-width: 768px) {
+    .navBar__menu {
+        display: none;
+    }
+
+    .navBar__menu-toggle {
+        display: flex;
+        align-items: center;
+        margin: 0 1rem;
+    }
+
+    .navBar__menu-toggle__icon {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+
+    .navBar__menu-toggle__icon span {
+        position: absolute;
+        width: 100%;
+        height: 20%;
+        background-color: #fff;
+        border-radius: 10px;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .navBar__menu-toggle__icon span:nth-child(1) {
+        transform: translateY(-50%);
+    }
+
+    .navBar__menu-toggle__icon span:nth-child(3) {
+        transform: translateY(50%);
+    }
+
+    .navBar__menu-toggle__icon.open span:nth-child(1) {
+        transform: translateY(0) rotate(45deg);
+    }
+
+    .navBar__menu-toggle__icon.open span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .navBar__menu-toggle__icon.open span:nth-child(3) {
+        transform: translateY(0) rotate(-45deg);
+    }
+
+    .navBar__menu-toggle__icon:hover span {
+        background-color: #aaa;
+    }
+
+    .navBar__menu-toggle__icon:focus span {
+        outline: none;
+        box-shadow: none;
+    }
+
+    .navBar__menu-toggle:focus~.navBar__menu {
+        display: flex;
+        flex-flow: column nowrap;
+        position: fixed;
+        top: 5rem;
+        left: 0;
+        width: 100%;
+        background-color: #181818;
+        padding: 1rem;
+        z-index: 999;
+    }
+
+    .navBar__menu-toggle:focus~.navBar__menu .navBar__menu-item {
+        margin: 0.5rem 0;
+    }
 }

@@ -1,0 +1,37 @@
+.favoritesicon__wrapper {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+
+.favoritesicon__count {
+    animation: show 0.2s linear forwards;
+    position: absolute;
+    top: -30px;
+    right: -10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background-color: red;
+    color: white;
+    font-size: 14px;
+    border: solid 2px #dbdfea;
+    background-color: #181818;
+}
+
+@keyframes show {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+
+}

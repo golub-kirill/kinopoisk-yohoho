@@ -14,6 +14,7 @@ import { AddToFavoritesButton } from '../../components/UI/AddToFavoritesButton/A
 import { kinopoiskApi } from '../../services/KinopoiskService';
 import { useFavorites } from '../../hooks/useFavorites';
 import { LoadingSpinner } from '../../components/UI/LoadingSpinner/LoadingSpinner';
+import { IFilm } from '../../models/IFilm';
 
 import styles from './InfoPage.module.css';
 
@@ -26,7 +27,10 @@ export const InfoPage: FC = memo(() => {
     } = kinopoiskApi.useFetchFilmByIdQuery(Number(params.filmId));
 
     const { favorites } = useFavorites();
-    const isFavorite = favorites.includes(film?.kinopoiskId!);
+    const isFavorite =
+        favorites.findIndex(
+            (favorite: IFilm) => favorite.kinopoiskId === film?.kinopoiskId
+        ) > -1;
     const mooveToTop = () => {
         window.scrollTo({
             top: 0,
@@ -41,20 +45,18 @@ export const InfoPage: FC = memo(() => {
             {isError && <div>Error!</div>}
             {film && (
                 <div className={styles.infoPage}>
-                    <div className={styles.infoPage__content}>
-                        <div className={styles.infoPage__content__poster}>
+                     <div className={styles.infoPage__content__poster}>
+                            <Ratings
+                                ratingKinopoisk={film.ratingKinopoisk}
+                                ratingImdb={film.ratingImdb}
+                            />
                             <img
                                 src={film.posterUrlPreview}
                                 alt={film.nameRu}
                                 loading="lazy"
                             />
-                            <Ratings
-                                ratingKinopoisk={film.ratingKinopoisk}
-                                ratingImdb={film.ratingImdb}
-                                reviewsCount={film.reviewsCount}
-                                ratingGoodReview={film.ratingGoodReview}
-                            />
                         </div>
+                    <div className={styles.infoPage__content}>
                         <div className={styles.infoPage__content__info}>
                             {/* TITLE */}
                             <Title
@@ -71,7 +73,7 @@ export const InfoPage: FC = memo(() => {
 
                             <AddToFavoritesButton
                                 isFavorite={isFavorite}
-                                filmId={film.kinopoiskId!}
+                                film={film}
                             />
 
                             {/* ABOUT */}
@@ -85,7 +87,7 @@ export const InfoPage: FC = memo(() => {
                             <Staff filmId={Number(params.filmId)} />
                         </div>
                     </div>
-                    <Player filmId={params.filmId} imdbId={film.imdbId}/>
+                    <Player filmId={params.filmId} imdbId={film.imdbId} />
                     <div onClick={mooveToTop}>
                         <SequelsAndPrequels filmId={Number(params.filmId)} />
                         <SimilarFilms filmId={Number(params.filmId)} />

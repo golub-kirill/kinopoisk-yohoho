@@ -1,28 +1,36 @@
+.ratings__wrapper {
+    position: absolute;
+    transform: translate(17rem, 1rem);
+    display: flex;
+    flex-flow: column;
+    align-items: flex-start;
+}
+
 .ratings__wrapper__kp {
     position: relative;
-    top: -30rem;
-    left: 20rem;
-    padding: 0.2rem;
+    padding: 0.5rem;
     border-radius: 5px;
-    background-color: #997a00;
     color: #ffffff80;
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-weight: bold;
+    white-space: nowrap;
     width: fit-content;
     margin: 0 0 0.5rem 0;
+    border: 2px solid #ffffffb0;
+
 }
 
 .ratings__wrapper__imdb {
     position: relative;
-    top: -30rem;
-    left: 20rem;
-    padding: 0.2rem;
+    padding: 0.5rem;
     border-radius: 5px;
-    background-color: #cc5200;
     color: #ffffff80;
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-weight: bold;
+    white-space: nowrap;
     width: fit-content;
+    border: 2px solid #ffffff80;
+
 }
 
 .votes {

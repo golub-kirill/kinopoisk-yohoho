@@ -3,23 +3,24 @@ import { BsBookmarkStar, BsCheck } from 'react-icons/bs';
 
 import { Button } from '../Button/Button';
 import { useFavorites } from '../../../hooks/useFavorites';
+import { IFilm } from '../../../models/IFilm';
 
 import styles from './AddToFavoritesButton.module.css';
 
 interface Props {
     isFavorite: boolean;
-    filmId: number;
+    film: IFilm;
 }
 
-export const AddToFavoritesButton: FC<Props> = memo((props: Props) => {
+export const AddToFavoritesButton: FC<Props> = memo(({isFavorite, film}) => {
     const { toggleFavorite } = useFavorites();
     return (
         <Button
-            className={props.isFavorite ? styles.addToFavoritesButton_active : undefined}
+            className={isFavorite ? styles.addToFavoritesButton_active : undefined}
             onClick={() => {
-                toggleFavorite(props.filmId);
+                toggleFavorite(film);
             }}
-            icon={props.isFavorite ? <BsCheck /> : <BsBookmarkStar />}>
+            icon={isFavorite ? <BsCheck /> : <BsBookmarkStar />}>
             Remember
         </Button>
     );

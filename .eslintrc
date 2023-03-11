@@ -9,10 +9,10 @@
         "prefer-const": "warn",
         "max-len": ["warn", { "code": 120 }],
         "comma-dangle": ["warn", "only-multiline"],
-        "quotes": ["error", "single"],
-        "jsx-quotes": ["error", "prefer-double"],
-        "semi": ["error", "always"],
-        "import/order": ["error",
+        "quotes": ["warn", "single"],
+        "jsx-quotes": ["warn", "prefer-double"],
+        "semi": ["warn", "always"],
+        "import/order": ["warn",
             { "groups": ["builtin", "external", "internal", "parent", "sibling", "index"],
             "newlines-between": "always" }]
                 }
