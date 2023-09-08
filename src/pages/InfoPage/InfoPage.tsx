@@ -18,13 +18,13 @@ import { IFilm } from '../../models/IFilm';
 
 import styles from './InfoPage.module.css';
 
-export const InfoPage: FC = memo(() => {
+export const InfoPage: FC = memo( () => {
     const params = useParams();
     const {
         data: film,
         isError,
         isLoading,
-    } = kinopoiskApi.useFetchFilmByIdQuery(Number(params.filmId));
+    } = kinopoiskApi.useFetchFilmByIdQuery(Number(params.Id));
 
     const { favorites } = useFavorites();
     const isFavorite =
@@ -84,13 +84,16 @@ export const InfoPage: FC = memo(() => {
                                 year={film.year}
                                 slogan={film.slogan}
                             />
-                            <Staff filmId={Number(params.filmId)} />
+                            <Staff filmId={Number(params.Id)} />
                         </div>
                     </div>
-                    <Player filmId={params.filmId} imdbId={film.imdbId} />
+                    <div>
+                    <Player filmId={params.id}/>
+                    </div>
                     <div onClick={mooveToTop}>
-                        <SequelsAndPrequels filmId={Number(params.filmId)} />
-                        <SimilarFilms filmId={Number(params.filmId)} />
+                        {/* TODO: Fix it */}
+                        {/* <SequelsAndPrequels filmId={Number(params.Id)} /> */}
+                        <SimilarFilms filmId={Number(params.Id)} />
                     </div>
                 </div>
             )}

@@ -1,7 +1,7 @@
 .card {
     display: flex;
     flex-flow: row nowrap;
-    width: 30vw;
+    max-width: 40vw;
     height: 20rem;
     background-color: #181a1b;
     border-radius: 5px;

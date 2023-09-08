@@ -1,7 +1,8 @@
-.player__wrapper {
+#player__wrapper {
     align-self: center;
-    margin: 5rem 0 3rem 0;
-    width: 80vw;
-    height: 40rem;
+border: 2px solid red;
+min-width: 10px;
+width: 100vw;
     z-index: 0;
+    
 }

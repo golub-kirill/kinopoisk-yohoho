@@ -2,10 +2,7 @@ import React from 'react';
 
 import { useFavorites } from '../../hooks/useFavorites';
 import { Card } from '../../components/Card/Card';
-import { kinopoiskApi } from '../../services/KinopoiskService';
 import { Navbar } from '../../components/Navbar/Navbar';
-import { LoadingSpinner } from '../../components/UI/LoadingSpinner/LoadingSpinner';
-import { IFilm } from '../../models/IFilm';
 
 import styles from './BookmarksPage.module.css';
 

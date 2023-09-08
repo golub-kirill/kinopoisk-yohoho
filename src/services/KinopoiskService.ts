@@ -15,7 +15,7 @@ export const kinopoiskApi = createApi({
                 url: '/v2.2/films/top',
                 params: {
                     type: 'TOP_100_POPULAR_FILMS', //'TOP_100_POPULAR_FILMS' 'TOP_250_BEST_FILMS' 'TOP_AWAIT_FILMS'
-                    page: page,
+                    page,
                 },
                 method: 'GET',
                 headers: {

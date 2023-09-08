@@ -1,18 +1,9 @@
-import React, {
-    FC,
-    memo,
-    useCallback,
-    useState,
-    useRef,
-    useEffect,
-} from 'react';
+import { FC, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useHover } from 'usehooks-ts';
 
 import { IFilm } from '../../models/IFilm';
 import { GenreTile } from '../UI/GenreTile/GenreTile';
 import placeholder from '../../assets/placeholder.svg';
-import { Ratings } from '../UI/Ratings/Ratings';
 import { kinopoiskApi } from '../../services/KinopoiskService';
 
 import styles from './Card.module.css';
@@ -21,29 +12,27 @@ interface Props {
     film: IFilm;
 }
 
-export const Card: FC<Props> = memo(({ film }) => {
+export const Card: FC<Props> = ({ film }) => {
     const navigate = useNavigate();
-    const {
-        data: info,
-        isError,
-        isLoading,
-    } = kinopoiskApi.useFetchFilmByIdQuery(Number(film?.filmId));
+    const { isError } = kinopoiskApi.useFetchFilmByIdQuery(
+        Number(film?.filmId)
+    );
 
-    const genresList = useCallback(() => {
+    const genresList = useMemo(() => {
         return film.genres?.map((genre): string => Object.values(genre)[0]);
     }, [film.genres]);
 
-    const countriesList = useCallback(() => {
+    const countriesList = useMemo(() => {
         return film.countries
             ?.map((country): object => Object.values(country))
             .join(' | ');
     }, [film.countries]);
 
-    // Exclude film by country
     if (film.countries.some((country) => Object.values(country)[0] === ' ')) {
         return null;
     }
 
+    if (isError) return null;
     return (
         <div
             className={styles.card}
@@ -54,12 +43,6 @@ export const Card: FC<Props> = memo(({ film }) => {
                 alt={film.nameEn}
                 loading="lazy"
             />
-            {/* {(info?.ratingKinopoisk || info?.ratingImdb) && (
-                <Ratings
-                    ratingKinopoisk={info?.ratingKinopoisk}
-                    ratingImdb={info?.ratingImdb}
-                />
-            )} */}
 
             <div className={styles.card__content}>
                 <div className={styles.card__content__title}>
@@ -85,11 +68,11 @@ export const Card: FC<Props> = memo(({ film }) => {
                         {film.year}
                     </span>
                     <span className={styles.card__content__info__country}>
-                        {countriesList()}
+                        {countriesList}
                     </span>
 
                     <span className={styles.card__content__info__genre}>
-                        {genresList()?.map((genre: string, index: number) => (
+                        {genresList?.map((genre: string, index: number) => (
                             <GenreTile key={index} genre={genre} />
                         ))}
                     </span>
@@ -97,4 +80,4 @@ export const Card: FC<Props> = memo(({ film }) => {
             </div>
         </div>
     );
-});
+};

@@ -2,9 +2,8 @@ import React, { FC, memo } from 'react';
 import {
     BsArrowLeftCircleFill,
     BsBookmarkStar,
-    BsPerson,
 } from 'react-icons/bs';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useReadLocalStorage } from 'usehooks-ts';
 
 import { Button } from '../UI/Button/Button';
