@@ -109,6 +109,4 @@ Start the server
 <!-- Contact -->
 ## Contact
 
-Kirill Golub - <a href="https://www.instagram.com/mr_k_o.o/">@Instagram</a> - golubkirill1997@gmail.com
-
 Project Link: [https://github.com/golub-kirill/kinopoisk-yohoho](https://github.com/golub-kirill/kinopoisk-yohoho)
